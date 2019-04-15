@@ -1,0 +1,131 @@
+/* pages/tz_withdrawal/tz_withdrawal.wxss */
+
+.add_account {
+  width: 692rpx;
+  height: 166rpx;
+  background-color: #fcfbfb;
+  border-radius: 2px;
+  display: flex;
+  padding: 42rpx 0;
+  margin: 40rpx auto 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.add_account .label {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  text-align: center;
+  line-height: 14px;
+  margin-left: 76rpx;
+  margin-right: 64rpx;
+}
+
+.add_account .text {
+  opacity: 0.3;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+}
+
+.add_account .text .tip {
+  margin-top: 26rpx;
+}
+
+.add_account .icon-xyb {
+  line-height: 14px;
+  position: absolute;
+  right: 50rpx;
+  font-size: 14px;
+}
+.accounted{
+  color:black;
+}
+.card {
+  background-color: #fff;
+  width: 692rpx;
+  height: 500rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 44rpx 60rpx 0;
+  position: relative;
+}
+
+.card .label {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+}
+
+.card .sign {
+  border-bottom: 1px solid #eee;
+  font-family: PingFangSC-Medium;
+  font-size: 34px;
+  color: #000;
+  letter-spacing: -0.82px;
+  display: flex;
+  line-height: 160rpx;
+}
+
+.card .sign input {
+  font-family: PingFangSC-Medium;
+  font-size: 50px;
+  color: #000;
+  letter-spacing: -1.21px;
+  height: 160rpx;
+}
+
+.card .opera {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #ccc;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+  margin: 41rpx 0;
+}
+
+.card .opera .all_btn {
+  color: #ff9500;
+}
+
+.card .btn {
+  width: 100%;
+  background-image: linear-gradient(90deg, #ff9000 0%, #fa0 93%);
+  border-radius: 200rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: -0.36px;
+}
+.withdrawal_instructions{
+  margin-top: 66rpx;
+  padding-left: 30rpx;
+}
+.withdrawal_instructions .title{
+  opacity: 0.4;
+font-family: PingFangSC-Semibold;
+font-size: 16px;
+color: #000000;
+letter-spacing: -0.39px;
+line-height: 14px;
+margin-bottom:40rpx;
+}
+.withdrawal_instructions .text text{
+  opacity: 0.4;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+  display: block;
+  margin-bottom: 20rpx;
+}

@@ -1,0 +1,20 @@
+<view class='slide-up_popup' catchtap='closePopup' catchtouchmove='preventEvent' wx:if='{{isShare}}' >
+    <view class='slot-wrapper {{isShow?"show":"hide"}}' catchtap='preventEvent'>
+        <view class='head'>
+            <text class='text'>请选择</text>
+            <image class="close" data-el='modal' catchtap='closePopup' src="../../images/icons/gb2@3x.svg"></image>
+        </view>
+        <view class='main'>
+            <view class='item'>
+                <image mode='aspectFill'  class='icon' src='../../images/wx@3x.svg'></image>
+                <text class='text'>生成链接，发送好友</text>
+                <button class="contact_button" open-type="share" data-type='2'></button>
+            </view>
+            <view class='item' bindtap='sharePyq'>
+                <image mode='aspectFill'  class='icon' src='/images/sc@3x.svg'></image>
+                <text class='text'>生成链接，发朋友圈</text>
+            </view>
+        </view>
+    </view>
+    
+</view>

@@ -1,0 +1,34 @@
+<header title='{{title}}' bindbackFun='backCheck'></header>
+<view class='empty'></view>
+<block hidden='{{init}}'>
+  <block wx:if='{{list.length}}'>
+    <view class='item' wx:for='{{list}}' wx:key='{{index}}' bindtap='itemClick' data-index='{{index}}'>
+      <view class='info'>
+        <view class='user {{cur_in == index?"color":""}}'>
+          <text class='name '>{{item.userName}}</text>
+          <text>{{item.userSex == 0?'先生':'女士'}}</text>
+          <text>{{item.userPhone}}</text>
+        </view>
+        <view class='detail'>
+          <text class='icon home'>{{item.addrLabel == 0?'家':item.addrLabel==1?'公司':'学校'}}</text>
+          <text class='value text-2-eclips'>{{item.shippingAddr + item.houseNum}}</text>
+        </view>
+      </view>
+      <view class='edit' catchtap='enterPage' data-type='1' data-index='{{index}}'>
+        <image src='/images/shdz_bj@3x.svg'></image>
+      </view>
+    </view>
+  </block>
+  <view wx:else class='no-list'>
+    <view class='box'>
+      <image src='/images/shdz@3x.svg'></image>
+      <text>收货地址在哪里</text>
+    </view>
+  </view>
+
+</block>
+
+<view class='footer' bindtap='enterPage' data-type='2'>
+  <text class='icon-shdz_xz'></text>
+  <text class='text'>新增地址</text>
+</view>

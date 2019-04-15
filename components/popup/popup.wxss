@@ -1,0 +1,74 @@
+@-webkit-keyframes asseshow {
+  from {
+    transform: translateY(100%)
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+@-webkit-keyframes assehide {
+  from {
+    transform: translateY(0)
+  }
+
+  to {
+    transform: translateY(100%)
+  }
+}
+@-webkit-keyframes coverhide {
+  from {
+   background: rgba(0, 0, 0, 0.6);
+  }
+
+  to {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+@-webkit-keyframes covershow {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  to {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 999;
+}
+.cover.show{
+  animation: covershow 0.5s ease 1;
+  animation-fill-mode: forwards;
+}
+.cover.hide{
+    animation: coverhide 0.5s ease 1;
+  animation-fill-mode: forwards;
+}
+
+.cover  .popup {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  transform: translateY(100%);
+}
+
+.cover  .popup.show {
+  animation: asseshow 0.5s ease 1;
+  animation-fill-mode: forwards;
+}
+
+.cover  .popup.hide {
+  animation: assehide 0.5s ease 1;
+  animation-fill-mode: forwards;
+}

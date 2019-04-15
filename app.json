@@ -1,0 +1,69 @@
+{
+  "pages": [
+   
+    "pages/index/index",
+    "pages/confrimOrder/confrimOrder",
+    "pages/payRes/payRes",
+    "pages/editAddress/editAddress",
+    "pages/orderDetail/orderDetail",
+    "pages/wallet/wallet",
+    "pages/addressList/addressList",
+    "pages/mating/mating",
+    "pages/assembleDetail/assembleDetail",
+    "pages/moreAssemble/moreAssemble",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/myProfit/myProfit",
+    "pages/chooseAddress/chooseAddress",
+    "pages/fansList/fansList",
+    "pages/channel/channel",
+    "pages/branchesOrder/branchesOrder",
+    "pages/qymating/qymating",
+    "pages/qyaddorder/qyaddorder",
+    "pages/qyOrder/qyOrder",
+        "pages/tz_wallet/tz_wallet",
+        "pages/tz_withdrawal/tz_withdrawal",
+        "pages/tz_paymentStatus/tz_paymentStatus",
+        "pages/binding_account/binding_account",
+        "pages/ptp/ptp",
+        "pages/invitation/invitation",
+        "pages/withdrawalDetails/withdrawalDetails",
+        "pages/tzfan/tzfan"
+        
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      }
+    },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#ff9500",
+    "backgroundColor": "#FFF",
+    "borderStyle": "rgba(221,221,221,0.50)",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/sy@3x.png",
+        "selectedIconPath": "images/tabBar/sy_y@3x.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/tabBar/dd@3x.png",
+        "selectedIconPath": "images/tabBar/dd_h@3x.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tabBar/wd@3x.png",
+        "selectedIconPath": "images/tabBar/wd_h@3x.png"
+      }
+    ]
+  }
+}

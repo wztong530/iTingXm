@@ -1,0 +1,14 @@
+<header title='{{title}}' isBack='{{isBack}}'></header>
+
+  <view class='part1'>
+    <image class='icon' src="../../images/icons/fkcg@3x.svg" mode='widthFix'></image>
+    <!-- "../../images/icons/fksb@3x.svg" -->
+    <text class='prom-text'>支付成功</text>
+    <!-- <text class='prom-text fail' wx:else>付款失败</text> -->
+    <view class='btns'>
+      <view class='back-sy line-btn' bindtap='back'>返回首页</view>
+      <view class='service line-btn' bindtap="enterDetail">查看订单</view>
+    </view>
+  </view>
+
+      <!-- <image class='ad' src='/images/00b5c5ce07bb1ba848624e6ff63e92702d52ad1b2b3de-gnG5dg_fw658.png'></image> -->

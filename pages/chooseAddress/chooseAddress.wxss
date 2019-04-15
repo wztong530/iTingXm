@@ -1,0 +1,136 @@
+.title {
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  background-color: rgb(242, 242, 242);
+  height: 68rpx;
+}
+
+.title text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+}
+
+.curr-ad {
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+
+.curr-ad text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: -0.34px;
+  line-height: 14px;
+}
+.curr-ad .refresh{
+  display: flex;
+  align-items: center;
+}
+.curr-ad .refresh image{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 16rpx;
+  margin-right: 14rpx;
+}
+
+
+/*  */
+.list {
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10rpx;
+  height: 142rpx;
+  border-bottom: 2rpx solid #e6e6e6;
+}
+
+.item text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 16px;
+}
+
+.item .address {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.item .tip {
+  color: #acacac;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  padding-left: 40rpx;
+  background-color: #fff;
+  box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.09);
+}
+
+.search text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+  margin-right: 28rpx;
+}
+
+.search input {
+  width: 562rpx;
+  height: 68rpx;
+  border-radius: 200rpx;
+  background: rgba(216, 216, 216, 0.2);
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: -0.34px;
+  line-height: 14px;
+  padding-left: 14rpx;
+}
+
+.search input.empty-input {
+  text-align: center;
+}
+
+.search input.place-class {
+  opacity: 0.4;
+}
+
+
+.nodata{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:300rpx;
+  flex-direction: column;
+}
+.nodata image {
+  width: 312rpx;
+  height: 218rpx;
+  margin-bottom: 52rpx;
+}
+.nodata text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #cacaca;
+  letter-spacing: -0.3px;
+  line-height: 20px;
+}

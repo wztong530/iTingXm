@@ -1,0 +1,28 @@
+<header title='{{title}}'></header>
+<view class='search'>
+  <text>厦门市</text>
+  <input placeholder-class='place-class' class='{{inputValue ===""?"empty-input":""}}' placeholder='搜索地址'  bindinput='inputchange' value='{{inputVale}}' bindconfirm='confirm' type='text' confirm-type='搜索'></input>
+</view>
+  <view class='title'>
+    <text>当前地址</text>
+  </view>
+  <view class='curr-ad'>
+    <text  bindtap='select' data-type='0' style='flex:1;'>{{cur.shippingAddr}}</text>
+    <view class='refresh' bindtap='refresh'><image mode='aspectFit' src='/images/cxdw@3x.png'></image><text>重新定位</text></view>
+  </view>
+  <view class='title'>
+    <text>附近地址</text>
+  </view>
+<view  class='list' wx:if='{{filterList.length}}'>
+  <view class='item' wx:for='{{filterList}}' wx:key='{{index}}' bindtap='select' data-index='{{index}}' data-type='1'>
+    <view class='address'>
+      <text>{{item.shippingAddr}}</text>
+      <text class='tip'>{{item.distance}}公里</text>
+    </view>
+    <text class='tip'>{{item.houseNum}}</text>
+  </view>
+</view>
+    <view class='nodata' wx:else>
+      <image src='/images/kym.svg'></image>
+      <text>～~暂无数据~～</text>
+    </view>

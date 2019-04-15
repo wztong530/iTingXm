@@ -1,0 +1,45 @@
+<!--pages/tz_wallet/tz_wallet.wxml-->
+<header title='{{title}}' isBgColor='true'></header>
+<view class='total'>
+  <image class='bg' src='../../images/bg-pattern.png' mode='scaleToFill'></image>
+  <view class="num">
+    <view  class='row1'>
+      <text>￥</text>
+      <text class='money'>{{data.account || 0}}</text>
+    </view>
+    <text>可提现金额</text>
+  </view>
+  <view class='assets_detail'>
+    <view class='title'>资产详情</view>
+    <view class='form'>
+      <view class='item'>
+       <text class='assets_num'>{{data.weekAccount}}</text>
+       <text class='assets_class'>本周收入</text>
+      </view>
+      <view class='item'>
+       <text class='assets_num'>{{data.monthAccount}}</text>
+       <text class='assets_class'>本月收入</text>
+      </view>
+      <view class='item'>
+       <text class='assets_num'>{{data.allAccount}}</text>
+       <text class='assets_class'>总收入</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='list'>
+  <view class='item' bindtap='enterJllist'>
+    <image src='../../images/jlmx@3x.svg'></image>
+    <text>奖励明细</text>
+    <text class='icon-xyb'></text>
+  </view>
+  <view class='item' bindtap='enterTxlist' data-url='../withdrawalDetails/withdrawalDetails'>
+    <image src='../../images/txjl@3x.svg'></image>
+    <text>提现明细</text>
+    <text class='icon-xyb'></text>
+  </view>
+</view>
+<view class='btn' bindtap='enterpage' data-url='../tz_withdrawal/tz_withdrawal'>提现</view>
+
+
+

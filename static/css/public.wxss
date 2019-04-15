@@ -1,0 +1,138 @@
+/* 客户弹窗 */
+
+.service-modal .modal {
+  background: #fff;
+  height: 228px;
+  border-bottom: 0.5px solid #ddd;
+}
+
+.service-modal .topbar {
+  height: 40px;
+  background: #f5f5f5;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  line-height: 40px;
+}
+
+.service-modal .close {
+  height: 12px;
+  width: 12px;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.service-modal .content {
+  height: 188px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-modal .block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.service-modal .content image {
+  height: 50px;
+  width: 50px;
+}
+
+.service-modal label {
+  display: block;
+}
+
+.service-modal .tip {
+  display: block;
+  padding-top: 12px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  line-height: 12px;
+}
+
+.service-modal .contact_btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+
+/* 确认弹窗 */
+
+.confrim-pop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
+.confrim-pop .popup {
+  width: 560rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44rpx 12rpx 0;
+  border-radius: 6px;
+}
+
+.confrim-pop .popup .tip {
+  font-family: PingFangSC-Regular;
+  line-height: 19px;
+}
+
+.confrim-pop .popup .tip.top {
+  font-size: 16px;
+  color: #1c1c1c;
+  letter-spacing: -0.39px;
+  margin-bottom: 30rpx;
+}
+
+.confrim-pop .popup .tip.middle {
+  font-size: 14px;
+  color: #666;
+  letter-spacing: -0.34px;
+  margin-bottom: 50rpx;
+}
+
+.confrim-pop .btn{
+  display: flex;
+  height: 88rpx;
+  width:100%;
+  border-top:1rpx solid #ddd;
+}
+.confrim-pop .btn view{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confrim-pop .btn text{
+  font-family: PingFangSC-Regular;
+font-size: 16px;
+color:#666;
+letter-spacing: 0;
+line-height: 16px;
+}
+.confrim-pop .btn text.yes{
+  color:var(--text);
+}
+.confrim-pop .btn .bd{
+  border-right: 1rpx solid #ddd;
+}

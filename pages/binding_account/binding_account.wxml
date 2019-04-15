@@ -1,0 +1,33 @@
+<!--pages/binding_account/binding_account.wxml-->
+<header title="{{title}}"></header>
+<!-- <view class='tip'>支付宝账号信息一旦绑定不能修改，请认真核对信息后提交</view>
+<view class='list'>
+  <view class='item'><input value='{{name}}' bindinput='changeinput' placeholder='请填写本人姓名' data-key='name'></input></view>
+  <view class='item'><input value='{{zh}}' bindinput='changeinput' placeholder='请填写支付宝账号(手机号或邮箱）'  data-key='zh'></input><text class='explain' catchtap='showpopup'>!</text></view>
+</view>
+<view class='btn' bindtap='bd'>马上绑定</view>
+
+<!-- 弹窗 -->
+<view wx:if="{{isShow}}" class='popup'>
+    <view class='mask' catchtap='hidepopup'></view>
+    <image src='../../images/card@2x.png'></image>
+</view>
+<view class='tip'>支付宝账号信息一旦绑定不能修改，请认真核对信息后提交</view>
+<view class='label'>绑定银行卡</view>
+<view class='list'>
+  
+  <view class='item'><input value='{{name}}' bindinput='changeinput' placeholder='姓名' data-key='name' placeholder-style='color:#aaa;'></input></view>
+  <view class='item'>
+    <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='bankName'>
+      <view class="picker {{yhIndex == -1 ?'color':''}}">
+        {{yh}}
+      </view>
+    </picker>
+  <text class='icon-xyb' catchtap='showpopup'></text></view>
+  <view class='item'><input type='number'  placeholder-style='color:#aaa;'  bindinput='changeinput' placeholder='银行卡号' data-key='card'></input></view>
+</view>
+<view class='label'>绑定支付宝</view>
+<view class='list'>
+  <view class='item'><input value='{{zh}}'  placeholder-style='color:#aaa;' bindinput='changeinput' placeholder='输入支付宝账号'  data-key='zh'></input><text class='explain' catchtap='showpopup'>!</text></view>
+</view>
+<view class='btn' bindtap='bd'>马上绑定</view>

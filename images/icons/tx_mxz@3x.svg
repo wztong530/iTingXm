@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>tx_mxz@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M331,21 C335.970563,21 340,16.9705627 340,12 C340,7.02943725 335.970563,3 331,3 C326.029437,3 322,7.02943725 322,12 C322,16.9705627 326.029437,21 331,21 Z" id="path-1"></path>
+    </defs>
+    <g id="05订单确认页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-337.000000, -232.000000)">
+        <g id="支付宝" transform="translate(15.000000, 229.000000)">
+            <g id="tx_mxz">
+                <use fill="#F5F5F5" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#CCCCCC" stroke-width="1" d="M331,20.5 C335.69442,20.5 339.5,16.6944204 339.5,12 C339.5,7.30557963 335.69442,3.5 331,3.5 C326.30558,3.5 322.5,7.30557963 322.5,12 C322.5,16.6944204 326.30558,20.5 331,20.5 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

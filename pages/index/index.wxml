@@ -1,0 +1,225 @@
+<block wx:if='{{init}}'>
+  <header title='{{title}}' isBack='{{isBack}}'></header>
+  <view class='activity'>
+    <swiper autoplay='true'>
+      <swiper-item class='item' wx:for='{{noticelist}}' wx:key='{{index}}'>
+        <text class='key'>活动：</text>
+        <text class='value text-1-eclips'>{{item.content}}</text>
+      </swiper-item>
+    </swiper>
+  </view>
+  <swiper autoplay='true' class='swiper' bindchange='' circular='true'>
+    <swiper-item class='item' wx:for='{{adImg}}'>
+      <image src='{{item.content}}'></image>
+    </swiper-item>
+  </swiper>
+<block>
+    <!-- catchtouchmove='preventNull' -->
+    <view class='content {{shipei?"shipei":""}}'>
+      <view class='orderbox {{shipei?"shipei":""}}'>
+        <view class='btn' bindtap='enterPage' data-url='order' data-type='1'>
+          <text>我要取餐</text>
+        </view>
+        <scroll-view scroll-x class='scrollbox'>
+          <view class='orderlist'>
+            <view class='empty'></view>
+            <view class='item {{currentTimeIndex == index ?"select":""}}' bindtap='selectTime' data-num='{{index}}' wx:for='{{timelist}}' wx:key='{{index}}'>
+              <text class='date'>{{item.week}}</text>
+              <text class='time' wx:if='{{index==0}}'>10点前下单</text>
+              <text class='time' wx:else>{{item.mon}}月{{item.date}}前下单</text>
+              <text class='tip'>已售<text class='num'>{{item.saleNumber}}</text>份</text>
+              <view class='selectbar'></view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+      <block wx:if='{{shoplist.length}}'>
+        <view class='recommend' bindtouchend='scrollEnd' bindtouchstart='scrollStart' catchtouchmove='reScroll'>
+          <view class='box {{isTran ?"tran":""}}' style='transform:translateX({{scrollL + "rpx"}})'>
+            <block wx:if='{{shoplist.length>2}}'>
+              <view class='item   {{currentIndex == shoplist.length -1?"current":""}}'>
+                <view class='img-cover'><text>已售罄</text></view>
+                <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
+                <view class='img-box'></view>
+                <image src='{{shoplist[shoplist.length -1].goodsImg}}' bindtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{shoplist.length -1}}'>
+                </image>
+
+                <view class='info'>
+                  <view class='txt'>
+                    <text class='name'>{{shoplist[shoplist.length -1].goodsName}}</text>
+                    <text class='value text-2-eclips'>{{shoplist[shoplist.length -1].goodsDescribe}}</text>
+                  </view>
+                <view class='btn pr {{!isToday?"":"super"}}'>
+                  <block wx:if='{{!isToday}}'>
+                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[shoplist.length -1].discountprice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+
+                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{shoplist.length-1}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[shoplist.length-1].groupPrice}}</text>
+                      </view>
+                      <text>拼团购</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{shoplist.length-1}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[shoplist.length-1].basicPrice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+                  </block>
+                </view>
+                </view>
+              </view>
+            </block>
+            <!--  -->
+            <view class='item   {{currentIndex == index?"current":""}}' wx:for='{{shoplist}}' wx:key='{{index}}'>
+            <view class='img-cover'><text>已售罄</text></view>
+              <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
+              <view class='img-box'></view>
+              <image src='{{item.goodsImg}}' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{index}}'></image>
+
+              <view class='info'>
+                <view class='txt'>
+                  <text class='name'>{{item.goodsName}}</text>
+                  <text class='value text-2-eclips'>{{item.goodsDescribe}}</text>
+                </view>
+                <view class='btn pr {{!isToday?"":"super"}}'>
+                  <block wx:if='{{!isToday}}'>
+                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{item.discountprice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+
+                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{item.groupPrice}}</text>
+                      </view>
+                      <text>拼团购</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{item.basicPrice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+            <!--  -->
+            <block wx:if='{{shoplist.length>2}}'>
+              <view class='item   {{currentIndex == 0?"current":""}}'>
+              <view class='img-cover'><text>已售罄</text></view>
+                <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
+                <view class='img-box'></view>
+                <image src='{{shoplist[0].goodsImg}}' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='0'>
+                </image>
+
+                <view class='info'>
+                  <view class='txt'>
+                    <text class='name'>{{shoplist[0].goodsName}}</text>
+                    <text class='value text-2-eclips'>{{shoplist[0].goodsDescribe}}</text>
+                  </view>
+                <view class='btn pr {{!isToday?"":"super"}}'>
+                  <block wx:if='{{!isToday}}'>
+                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{0}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[0].discountprice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+
+                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{0}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[0].groupPrice}}</text>
+                      </view>
+                      <text>拼团购</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{item.basicPrice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+                  </block>
+                </view>
+                </view>
+              </view>
+              <view class='item'>
+                <view class='img-box'></view>
+                <image src='{{shoplist[1].goodsImg}}'>
+                </image>
+                <view class='info'>
+                  <view class='txt'>
+                    <text class='name'>{{shoplist[1].goodsName}}</text>
+                    <text class='value text-2-eclips'>{{shoplist[1].goodsDescribe}}</text>
+                  </view>
+                <view class='btn pr {{!isToday?"":"super"}}'>
+                  <block wx:if='{{!isToday}}'>
+                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{1}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[1].discountprice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+
+                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{1}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{shoplist[1].groupPrice}}</text>
+                      </view>
+                      <text>拼团购</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
+                      <view class='price'>
+                        <text class='txt-mark'>¥</text>
+                        <text>{{item.basicPrice}}</text>
+                      </view>
+                      <text>专享购</text>
+                    </view>
+                  </block>
+                </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <!-- {{isWeek?"week":"work"}} -->
+          <image src='{{nodataImg}}' class='{{isWeek?"week":"work"}}'></image>
+          <text>{{nodataTxt}}</text>
+        </view>
+      </block>
+    </view>
+  </block>
+</block>
+
+
+
+<view class='gradual-box'></view>

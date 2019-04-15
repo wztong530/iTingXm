@@ -1,0 +1,10 @@
+{
+  "extEnable": true,
+  "extAppid": "wxdb9afbb5fccceaee",
+  "ext": {
+    "restUrl": "https://abc.smartmapdt.com/xsl/",
+    "businessId": "8da416c087414a5f963b400056647f78",
+    "userVersion": "1.0.0",
+    "businessName": "钢琴新势力"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "header": "../../components/header/header",
+    "share-popup":"../../components/sharepopup/sharepopup",
+    "popup":"../../components/popup/popup",
+    "painter":"../../components/painter/painter"
+  }
+}

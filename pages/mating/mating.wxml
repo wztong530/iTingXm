@@ -1,0 +1,95 @@
+<header title='{{title}}'></header>
+<!--  -->
+<view class='tabnav'>
+  <view class='item pr {{currentTab == index ?"select":""}}' bindtap='selecttab' wx:for='{{tablist}}' data-index='{{index}}' data-type='{{item.type}}'>
+    <text>{{item.name}}</text>
+    <view class='bd'></view>
+  </view>
+</view>
+
+<!--  -->
+<block wx:if='{{filterlist.length}}'>
+  <scroll-view scroll-y class='list'>
+    <view class='item {{index==filterlist.length - 1?"nobd":""}}' wx:for='{{filterlist}}' wx:key='{{index}}' >
+      <view class='cover'><text>已售罄</text></view>
+      <image class='goods' mode='aspectFill' src='{{item.goodsImg}}'></image>
+      <view class='content pr'>
+        <text class='name'>{{item.goodsName}}</text>
+        <text class='sales'>销量 {{item.sumSalesVolume}}</text>
+        <view class='box'>
+          <text class='price'><text class='mark'>￥</text>{{item.basicPrice}}</text>
+          <view class='tip' wx:if='{{(item.type == 0 ?!isToday : false)&&tipHid != index}}'><text>提前预订最低享{{sales}}折</text></view> 
+        </view>
+        <view class='btn'>
+          <image src='/images/dp_js.svg' class='sub' bindtap='addReduce' data-type='0' hidden='{{buyNum[item.mallGoodsInventoryId] == 0}}' data-index='{{index}}' data-target='1'></image>
+          <text class='number' hidden='{{buyNum[item.mallGoodsInventoryId] == 0}}'>{{buyNum[item.mallGoodsInventoryId]}}</text>
+          <view class='add' bindtap='addReduce' data-type='1' data-index='{{index}}' data-target='1'>
+            <text class='icon-num-add icon'></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='/images/kym.svg'></image>
+    <text>～~换种餐品看看吧~～</text>
+  </view>
+</block>
+<!--  -->
+<view class='cart pr'>
+  <view class='total' catchtap='showcart'>
+    <view class='icon'>
+      <image src='/images/gwc@3x.svg'></image>
+      <view class='num' wx:if='{{totalCount != 0}}'>
+        <text>{{totalCount}}</text>
+      </view>
+    </view>
+    <view class='txt'>
+      <text>合计￥{{totalPrice}}元</text>
+      <text class='tip'>满30元免运费</text>
+    </view>
+  </view>
+
+  <block wx:if='{{phone}}'>
+    <view class='buy' catchtap='enterPage'>
+      <text>去结算</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='buy'>
+      <text>去结算</text>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='pos-btn'></button>
+    </view>
+  </block>
+
+</view>
+
+<!-- 购物车详情列表 -->
+<popup isShow='{{isShow}}' isPopup='{{isCover}}' catchhide='hidecart'>
+  <view class='cart-list'>
+    <view class='header'>
+      <text>餐品列表</text>
+    </view>
+    <scroll-view scroll-y class='c-list'>
+      <!-- <view class='title item'>
+        <text class='name'>{{setMeal.goodsName}}</text>
+        <text class='num'>×{{marincount}}</text>
+        <text class='price'>￥{{mainprice}}</text>
+      </view> -->
+      <view class='item' wx:for='{{cartlist}}'>
+        <text class='name'>{{item.goodsName}}</text>
+        <text class='price'>￥{{single[item.mallGoodsInventoryId]}}</text>
+        <view class='btn'>
+          <image src='/images/dp_js.svg' class='sub' bindtap='addReduce' data-type='0' hidden='{{buyNum[item.mallGoodsInventoryId] == 0}}' data-index='{{index}}' data-target='2'></image>
+          <text class='number'>{{buyNum[item.mallGoodsInventoryId]}}</text>
+          <view class='add'>
+            <text class='icon-num-add icon' bindtap='addReduce' data-type='1' data-index='{{index}}' data-target='2'></text>
+          </view>
+        </view>
+      </view>
+      <view class='empty'></view>
+    </scroll-view>
+  </view>
+</popup>

@@ -1,0 +1,56 @@
+<!--pages/EnterpriseOrder/EnterpriseOrder.wxml-->
+<header title='{{title}}' isBack='{{isBack}}' pages='{{pages}}'></header>
+
+<block wx:if='{{orderlist.length}}'>
+  <view class='orderList'>
+    <view class='orderItem' wx:for='{{orderlist}}' wx:key='{{index}}'>
+      <view class='top'>
+        <view class='branchName'>
+          <text class='txt'>{{item.branchesName}}</text>
+          <!-- <text class='icon-xyb icon'></text> -->
+        </view>
+        <view class='state txt'>{{item.mallOrder.payStatus == 1?'未付款':item.mallOrder.payStatus == 4 ? "待退款":item.mallOrder.payStatus == 5?"已退款":item.takeStatus == 0 ? '未配送' : item.takeStatus == 1?'待配送': item.takeStatus == 2 ? '正在配送' : '已送达'}}</view>
+      </view>
+      <view class='orderDetail'>
+        <view class='food'>
+          <view class='fooditem' wx:for='{{item.orderDetailList}}' wx:for-item='itemD' wx:if='{{indexD<4}}' wx:for-index='indexD' wx:key='{{indexD}}'>
+            <image class='foodimg' mode='aspectFill' src='{{itemD.goodsImg}}'></image>
+            <view class='price'>￥{{itemD.goodsPrice}}</view>
+          </view>
+          <view class='ellipsis' wx:if='{{item.orderDetailList.length>4}}'>
+            <text class='dots'></text>
+            <text class='dots'></text>
+            <text class='dots'></text>
+          </view>
+        </view>
+
+        <view class='food_num_price'>
+          <view class='totalprice'>￥{{item.orderPrice}}</view>
+          <view class='totalnum'>共{{item.goodsNum}}件</view>
+        </view>
+      </view>
+      <view class='bottom'>
+        <text class='time'>取餐时间：{{item.bookTime}} 12点前</text>
+        <view class='share btn' bindtap='sharepopup' wx:if='{{item.orderType==1&&(item.mallOrder.payStatus==0)}}' data-index='{{index}}'>
+          <text>分享拼单</text>
+        </view>
+        
+        <view class='concat btn' data-index='{{index}}' wx:if='{{item.takeStatus == 2}}' bindtap='call'><text>联系骑手</text></view>
+        <view class='btn' bindtap='enterpage' data-index='{{index}}'>
+          <text>查看详情</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='hasNomore'>没有更多了～</view>
+</block>
+<block wx:else>
+    <view class='nodata'>
+      <image src='/images/kym.svg'></image>
+      <text>～~还没有订单哦~～</text>
+    </view>
+</block>
+<!--  -->
+<share isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></share>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />
+<view class='gradual-box'></view>

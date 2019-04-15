@@ -1,0 +1,6 @@
+<view class='cover {{isShow?"show":"hide"}}' catchtouchmove='preventNull' wx:if='{{isPopup}}' catchtap='hide'>
+  <view class='popup {{isShow?"show":"hide"}}' catchtap='preventNull'>
+    <slot></slot>
+  </view>
+</view>
+<!-- 和分享弹窗组件的区别在于这个可以自定义弹窗内容 -->

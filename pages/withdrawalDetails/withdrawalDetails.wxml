@@ -1,0 +1,23 @@
+<!--pages/withdrawalDetails/withdrawalDetails.wxml-->
+<header title="{{title}}"></header>
+<view class='list' wx:if='{{list.length}}'>
+  <view class='item' wx:for='{{list}}' wx:key='{{index}}'>
+    <view class='left'>
+      <image src='../../images/txmx@3x.svg'></image>
+      <view class='text'>
+        <view class='opera'>提现到支付宝</view>
+        <view class='time'>{{item.updateDate}}</view>
+      </view>  
+    </view>
+    <view class='right'>
+      <view class='money'>+{{item.money}}</view>
+      <view class="status {{item.status == 0?'yellow':item.status == 1 ?'':'red'}}">{{item.status == 0?'审核中':item.status == 1 ?'提现成功':'提现失败'}}</view>
+    </view>
+  </view>
+</view>
+<view wx:else>
+    <view class='nodata'>
+      <image src='/images/kym.svg'></image>
+      <text>暂无提现请求</text>
+    </view>
+</view>

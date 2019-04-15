@@ -1,0 +1,39 @@
+.header{
+  position: fixed;
+  width: 100%;
+  top:0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 88rpx;
+  background-color: white;
+  z-index: 9999;
+}
+.bg{
+  background-color: #2E2E2E;
+}
+.emptybox{
+  height: 88rpx;
+}
+.header text{
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: -0.43px;
+  font-weight: 700;
+}
+.back{
+  position: absolute;
+  left: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: #fff;
+  padding: 20rpx;
+  top:50%;
+  margin-top:-20rpx;
+}
+.bg .back{
+  background: #2E2E2E;
+}

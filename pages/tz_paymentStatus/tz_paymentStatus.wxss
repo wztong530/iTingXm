@@ -1,0 +1,71 @@
+/* pages/tz_paymentStatus/tz_paymentStatus.wxss */
+.cont{
+  background-color: #FFFFFF;
+  padding-bottom: 40rpx;
+  width: 100%;
+  text-align: center;
+}
+.cont image{
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  margin:70rpx auto 26rpx;
+}
+.cont .tip{
+  font-family: PingFangSC-Regular;
+  font-size: 18px;
+  letter-spacing: -0.43px;
+  line-height: 18px;
+  margin-bottom: 34rpx;
+}
+.cont .res .tip{
+  color: #19C80A;
+}
+.cont .fail .tip{
+  color: #FF3E4E;
+}
+.cont .money{
+  font-family: PingFangSC-Semibold;
+  font-size: 30px;
+  color: #000000;
+  letter-spacing: -0.72px;
+  text-align: center;
+  line-height: 24px;
+}
+.cont .money .symbol{
+  font-size: 20px;
+}
+.cont .res .money{
+  margin-bottom: 30rpx;
+}
+.cont .fail .money{
+  margin-bottom: 88rpx;
+}
+.cont .time{
+  opacity: 0.4;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: -0.34px;
+  text-align: center;
+  line-height: 14px;
+  margin-bottom: 40rpx;
+}
+.cont .btns{
+  display: flex;
+  width: 460rpx;
+  margin: 0 auto;
+  justify-content: space-between; 
+}
+.cont .btns .btn{
+  border: 1px solid #666666;
+  border-radius: 3px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: -0.34px;
+  text-align: center;
+  width: 200rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+}

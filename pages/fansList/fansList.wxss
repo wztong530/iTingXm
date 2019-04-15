@@ -1,0 +1,99 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  height: 80rpx;
+}
+
+.title view {
+  flex: 1;
+}
+
+.title text {
+  font-family: PingFangSC-Regular;
+  color: #000;
+}
+
+.title .name {
+  opacity: 0.4;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 12px;
+}
+
+.title .value {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+/*  */
+
+.list {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+.item {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  height: 136rpx;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+.item .fl{
+  display: flex;
+  align-items: center;
+}
+.item  image.user {
+  margin-right: 16rpx;
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 42rpx;
+}
+.item .call{
+  width:50rpx;
+  height: 50rpx;
+  margin-right:50rpx;
+}
+
+.item .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item .content .name {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #222333;
+  letter-spacing: -0.3px;
+  line-height: 14px;
+  margin-bottom: 16rpx;   
+}
+
+.item .content .time {
+  opacity: 0.4;
+  font-family: PingFangSC-Light;
+  font-size: 12px;
+  color: #000;
+  letter-spacing: -0.26px;
+  line-height: 12px;
+}
+
+
+.hasdata{
+  height: 130rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hasdata text{
+  opacity: 0.45;
+font-family: PingFangSC-Regular;
+font-size: 12px;
+color: #000000;
+letter-spacing: -0.29px;
+text-align: center;
+line-height: 12px;
+}
