@@ -1,0 +1,77 @@
+/* pages/apply_form/apply_form.wxss */
+page{background: #ffffff;}
+.form .item{
+  padding: 30rpx;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.form .item:nth-child(8){
+  flex-direction: column;
+  align-items: left;
+}
+.form .item .label{
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.form .item input,
+.form .item .right{
+  text-align:right;
+  opacity: 0.66;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+}
+.form .item .right .icon-xyb{
+  margin-left: 20rpx;
+}
+.form textarea{
+  width: 690rpx;
+  height: 146rpx;
+  background: #EEEEEE;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.submit_btn{
+  width: 690rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(255, 68, 53, 0.1);
+  background-image: var(--linearTwo);
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFangSC;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  position: fixed;
+  bottom: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.explain{
+  width: 100%;
+  padding:30rpx;
+  font-family: PingFangSC-Regular; 
+}
+.explain>view:first-child{
+  font-size: 15px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.explain>view:last-child{
+  width: 690rpx;
+  margin-top: 18rpx;
+  font-size: 14px;
+  color: #333333;
+  letter-spacing: 0.4px;
+  line-height: 24px;
+}

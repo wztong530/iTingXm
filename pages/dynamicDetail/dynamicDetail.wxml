@@ -1,0 +1,39 @@
+<!--pages/dynamicDetail/dynamicDetail.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<view class='detail_top'>
+  <view>
+    <image class='avatar' src='{{detail.userImage}}' mode='aspectFill' lazy-load></image>
+  </view>
+  <view>
+    <view class='name'>{{detail.userName}}</view>
+    <view class='time'>{{detail.createDate}}</view>
+  </view>
+</view>
+<!-- 内容 -->
+<view class='detail_card'>
+  <view class='card-content'>{{detail.content}}</view>
+  <view class='card-imgsbox'>
+    <image wx:for='{{detail.imgUrlList}}' wx:key='{{index}}' src='{{item}}' lazy-load mode='aspectFill' data-url='../picturePreview/picturePreview' catchtap='enterPage' data-len='{{detail.imgUrlList.length}}' data-index='{{index}}' data-imgurl='{{item}}'></image>
+  </view>
+</view>
+<!-- 底 -->
+<view class='detail_bottom'>
+  <view class='item' catchtap='likeDynamic'>
+    <image class='card_icon' src='../../images/anchor/{{detail.isLike?"dianzan2@3x":"dianzan1@3x"}}.png'></image>
+    <text class='card_text'>{{detail.likeNum}}</text>
+  </view>
+  <view class='flag'></view>
+  <view class='item' bindtap='sharepopup'>
+    <image class='card_icon' src='../../images/anchor/zhuanfa-2@3x.png'></image>
+    <text class='card_text'>{{detail.forwardNum}}</text>
+  </view>
+  <view class='flag' wx:if='{{detail.userId==userInfo.id}}'></view>
+  <view class='item' wx:if='{{detail.userId==userInfo.id}}' catchtap='deleteItem'>
+    <image class='card_icon' src='../../images/anchor/shanchu@3x.png'></image>
+    <text class='card_text'>删除动态</text>
+  </view>
+</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

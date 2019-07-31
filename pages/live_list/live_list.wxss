@@ -1,0 +1,97 @@
+/* pages/live_list/live_list.wxss */
+.live_list .item{
+  width: 690rpx;
+  height: 196rpx;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.10);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 42rpx;
+  position: relative;
+}
+.live_list .item:nth-child(1){
+  margin-top: 30rpx;
+}
+.live_list .item .img{
+  width: 156rpx;
+  height: 156rpx;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  background-color:#eee;
+}
+.live_list .item .conts .title{
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #000000;
+  margin-top:-38rpx;
+}
+.live_list .item .conts .anchor{
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #666666;
+  margin-top:6rpx;
+}
+.live_list .item .conts .listen_times{
+  font-family: PingFangSC-Regular;
+  font-size: 9px;
+  /* color: #FFFFFF; */
+  color:#666;
+  letter-spacing: 0;
+  width: 100%;
+  /* height: 66rpx; */
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 96%, rgba(0,0,0,0.25) 100%);
+  position:absolute;
+  bottom:0;
+  left: 0;
+  border-bottom-left-radius:16rpx;
+  border-bottom-right-radius:16rpx;
+  padding:12rpx 0 0 10rpx;
+  box-sizing:border-box;
+  display: flex;
+  padding-left: 30%;
+}
+
+.live_list .item .conts .listen_times .num{
+  font-family: PingFangSC-Medium;
+  font-size: 12px;
+  /* color: #fff; */
+  color: #666;
+  letter-spacing: 0;
+  margin-top:-8rpx;
+}
+.live_list .item .conts .listen_times .bg_dark{
+  background-color: #999;
+}
+.live_list .item .statue{
+  width: 182rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  border-radius: 0 16rpx 0 100rpx/0 16rpx 0 100rpx;
+  position:absolute;
+  top: 0;
+  right: 0;
+}
+.live_list .item .statue.live_ing{
+  background-image: var(--linearOne);
+}
+.live_list .item .statue.live{
+  background: #BBBBBB;
+}
+.live_list .item .statue.lived{
+  background: #CCCCCC;
+}
+.live_list .item .time{
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  position: absolute;
+  right: 24rpx;
+  bottom: 20rpx
+}

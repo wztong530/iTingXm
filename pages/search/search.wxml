@@ -1,0 +1,199 @@
+<!--pages/search/search.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<!-- 搜索框 -->
+<view class='search_box' >
+  <input placeholder='请输入' placeholder-style='color:#999; font-size:14px;' value='{{content}}' bindinput='searchInput' bindfocus='focus' bindconfirm='totalSearch'></input>
+  <view class='btn_cancel searching' hidden='{{status!=1}}' catchtap='totalSearch'>搜索</view>
+  <view class='btn_cancel' hidden='{{status==1}}' catchtap='cancel'>取消</view>
+</view>
+<!-- 未输入状态 -->
+<view class='uninput' hidden='{{status!=0}}'>
+  <block wx:if='{{queryHistoryList.length>0}}'>
+    <view class='history_title'>历史搜索</view>
+    <view class='history_box'>
+      <view class='history_item text-1-eclips' catchtap='totalSearch' wx:for='{{queryHistoryList}}' wx:key='index' data-content='{{item}}'>{{item}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='nodata history_nodata'>
+      <image src='../../images/kym.png'></image>
+      <text>~请开始新的搜索~</text>
+    </view>
+  </block>
+</view>
+<!-- 输入时状态 -->
+<view class='inputing' hidden='{{status!=1}}'>
+  <scroll-view scroll-y style='width:100%;height:100%;'>
+    <view class='records' catchtap='classifySearch' wx:for='{{fuzzyQueryList}}' wx:key='index' data-type='{{item.resultType}}'>
+      <image src='../../images/icons/search.svg'></image>
+      <text class='text-1-eclips'>{{item.typeName}}-{{item.resultString}}</text>
+    </view>
+  </scroll-view>
+</view>
+<!-- 内容显示区 -->
+<view hidden='{{status!=2}}'>
+  <block wx:if='{{noData}}'>
+    <view class='nodata'>
+      <image src='../../images/kym.png'></image>
+      <text>~暂无相关搜索结果~</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 导航栏 -->
+    <view class='navbar'>
+      <view class='nav_item {{selected==index+1 ?"active":""}}' wx:for='{{navList}}' wx:key='index' catchtap='selectItem' data-index='{{index+1}}'>{{item}}</view>
+    </view>
+    <!-- 动态 -->
+    <view wx:if='{{selected==1}}'>
+      <block wx:if='{{dynamicList.length>0}}'>
+        <view class='card' wx:for='{{dynamicList}}' wx:key='{{index}}' bindtap='enterPage' data-url='../dynamicDetail/dynamicDetail' data-id='{{item.id}}'>
+          <view class='card-date'>{{item.createDate}}
+          </view>
+          <view class='card-title text-2-eclips'>{{item.content}}</view>
+          <view class='card-imgsbox'>
+            <image wx:for='{{item.imgUrlList}}' wx:key='{{index}}' src='{{item}}' lazy-load mode='aspectFill'></image>
+          </view>
+          <view class='card_bottom'>
+            <view>
+              <image class='card_icon' src='../../images/anchor/{{item.isLike?"dianzan2@3x":"dianzan1@3x"}}.png'></image>
+              <text class='card_text'>{{item.likeNum}}</text>
+            </view>
+            <view>
+              <image class='card_icon' src='../../images/anchor/zhuanfa-2@3x.png'></image>
+              <text class='card_text'>{{item.forwardNum}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <image src='../../images/kym.png'></image>
+          <text>~暂无相关动态~</text>
+        </view>
+      </block>
+    </view>
+    <!-- 主播 -->
+    <view wx:if='{{selected==2}}'>
+      <block wx:if="{{myFocusList.length>0}}">
+        <view class='item' wx:for="{{myFocusList}}" wx:key='{{index}}' bindtap='enterPage' data-url='../anchorHome/anchorHome' data-id='{{item.id}}'>
+          <image class='avatar' src='{{item.imgUrl}}'  mode='aspectFill' lazy-load></image>
+          <view class='conts'>
+            <view class='box_top'>
+              <view class='name'>{{item.name}}</view>
+            </view>
+            <view class='chat text-1-eclips'>
+              {{item.introduction}}
+            </view>
+          </view>
+          <view class='status'>
+            <text class='attention' wx:if='{{item.focusStatus == "0"}}'>+关注</text>
+            <text class='cancel_attention' wx:else>已关注</text>
+          </view>
+        </view>
+        <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <image src='../../images/kym.png'></image>
+          <text>~暂无相关主播~</text>
+        </view>
+      </block>
+    </view>
+    <!-- 电台 -->
+    <view wx:if='{{selected==3}}'>
+      <block wx:if="{{programsList.length>0}}">
+        <view class='program_list' >
+          <view class='program_item' wx:for="{{programsList}}" wx:key='{{index}}' catchtap='enterPage' data-id='{{item.radioCategoryId}}' data-url='../program_list/program_list'>
+            <view class='left'>
+              <image class='bg' src='{{item.imgUrl}}' lazy-load mode='aspectFill'></image>
+            </view>
+            <view class='mid'>
+              <view class='program_name'>{{item.programsTitle}}</view>
+              <view class='program_time'>更新时间: {{item.pubtime}}</view>
+              <view class='program_graphic'>
+                <view class='listen_time pg_item'>
+                  <view class="icon">
+                    <text></text>
+                    <text></text>
+                    <text></text>
+                  </view>
+                  <text class='num'>{{item.playNum}}</text>
+                </view>
+                <view class='pg_item'>
+                  <image src='../../images/anchor/{{item.likeStatus=="1"?"dianzan2@3x.png":"dianzan001.png"}}'></image>
+                  <text>{{item.likeNum}}</text>
+                </view>
+                <view class='pg_item'>
+                  <image src='../../images/comment.png'></image>
+                  <text>{{item.commentsNum}}</text>
+                </view>
+              </view>
+            </view>
+            <view class='right'>
+              <view class='play_icon'>
+                <image src='../../images/play_list.png'></image>
+              </view>
+            </view>
+          </view>
+          <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <image src='../../images/kym.png'></image>
+          <text>~暂无相关节目～</text>
+        </view>
+      </block>
+    </view>
+    <!-- 资讯 -->
+    <view wx:if='{{selected==4}}'>
+      <block wx:if='{{newsList.length>0}}'>
+        <view class='tab_item' wx:for="{{newsList}}" wx:key='{{index}}' catchtap='enterPage' data-url="../information_detail/information_detail" data-id='{{item.id}}' data-index='{{index}}' >
+          <image src='{{item.imgUrl}}' class='zixun_bg' lazy-load mode='aspectFill'></image>
+          <view class='info'>
+            <text class='title text-2-eclips {{item.viewsStatus == 1?"looked":""}}'>{{item.title}}</text>
+            <view class='view'>
+              <image class='icon' src='../../images/icon-view@3x.png'></image>
+              <text class='looknum'>{{item.views}}浏览</text>
+            </view>
+          </view>          
+        </view>
+        <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <image src='../../images/kym.png'></image>
+          <text>~暂无相关资讯~</text>
+        </view>
+      </block>
+    </view>
+    <!-- 活动 -->
+    <view wx:if='{{selected==5}}'>
+      <block wx:if="{{activityList.length>0}}">
+        <view class='active_list'>
+          <view class='active_box' wx:for="{{activityList}}" wx:key='{{index}}' catchtap='enterPage' data-id='{{item.id}}' data-url='../discover_detail/discover_detail'>
+            <view class='status {{item.activityStatus == 1?"active":""}}'>{{item.activityStatus == 0?"未开始":item.activityStatus == 1?"已开始":"已结束"}}</view>
+            <image class='bg' src='{{item.imgUrl}}' mode='aspectFill' lazy-load></image>
+            <view class='conts'>
+              <view class='title text-1-eclips'>{{item.activityTitle}}</view>
+              <view class='article text-1-eclips'>
+                <rich-text nodes='{{item.content}}'></rich-text>
+              </view>
+              <view class='time'>{{item.beginTime}}至{{item.endTime}}</view>
+              <text class='btn {{item.activityInStatus == 1?"already":item.activityStatus==2?"already":""}}'>{{item.activityInStatus == 1?'已报名':item.activityStatus==2?'已结束':'进入报名'}}</text>
+            </view>
+          </view>
+          <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+        </view> 
+      </block>
+      <block wx:else>
+        <view class='nodata'>
+          <image src='../../images/kym.png'></image>
+          <text>~暂无相关活动~</text>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>
+

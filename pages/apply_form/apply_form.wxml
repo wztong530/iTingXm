@@ -1,0 +1,56 @@
+<!--pages/apply_form/apply_form.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<form bindsubmit='formSubmit'>
+  <view class='form'>
+    <view class='item'>
+      <view class='label'>姓名</view>
+      <input placeholder='请输入姓名' name='name'></input>
+    </view>
+    <view class='item'>
+      <view class='label'>性别</view>
+      <radio-group class='right' color='#666666' name='sex'>
+        <radio value='1'>男</radio>
+        <radio value='0' style='margin-left:2px;'>女</radio>
+      </radio-group>
+    </view>
+    <!-- <view class='item'>
+      <view class='label'>年龄</view>
+      <input placeholder='请输入年龄'></input>
+    </view> -->
+    <view class='item'>
+      <view class='label'>电话</view>
+      <input placeholder='请输入联系电话' type='number' name='phone'></input>
+    </view>
+    <!-- <view class='item'>
+      <view class='label'>邮箱</view>
+      <input placeholder='请输入电子邮箱'></input>
+    </view>
+    <view class='item'>
+      <view class='label'>身份证号</view>
+      <input placeholder='请输入身份证号码' type='idcard'></input>
+    </view> -->
+    <view class='item'>
+      <view class='label'>地址</view>
+      <input placeholder='请输入地址' name='address'></input>
+      <!-- <view class='right'>请选择地址<text class='icon-xyb'></text></view> -->
+    </view>
+    <view class='explain'>
+      <view>备注</view>
+      <view>
+        <textarea placeholder='请输入...' name='explain'>
+        </textarea>
+      </view>
+    </view> 
+  </view>
+  <!-- 备注说明 -->
+  <view class='explain'>
+    <view>备注说明</view>
+    <view>
+      <rich-text nodes='{{prompt}}'></rich-text>
+    </view>
+  </view>
+  <label for='submit'>
+    <view class='submit_btn' >提交</view>
+  </label>
+  <button form-type='submit' id='submit'></button>
+</form>

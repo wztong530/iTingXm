@@ -6,13 +6,16 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.2",
-	"appid": "wx537617c30c5161ea",
-	"projectname": "%E5%8F%A4%E9%BE%99",
+	"libVersion": "2.7.2",
+	"appid": "wxc08cedc32dedd5a0",
+	"projectname": "i%E5%90%AC%E5%8E%A6%E9%97%A8_%E4%BD%93%E9%AA%8C%E7%89%88",
 	"isGameTourist": true,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -31,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -102,7 +105,22 @@
 				{
 					"id": -1,
 					"name": "rank detail",
-					"pathName": "pages/rankListDetail/index"
+					"pathName": "pages/rankListDetail/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "测试关注公众号",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": 13,
+					"name": "最近使用进入",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1011
 				}
 			]
 		}

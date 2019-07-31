@@ -1,0 +1,12 @@
+<!--pages/picturePreview/picturePreview.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<view class='pre_img'>
+  <image src='{{imgurl}}' mode='widthFix' lazy-load bindlongpress='saveImg'></image>
+  <button class='save_btn' open-type="openSetting" bindopensetting='handleSetting' hidden='{{openSettingBtnHidden}}'></button>
+</view>
+<view class='reply_mask' wx:if='{{showSave}}'>
+  <view class='reply_box'>
+    <view catchtap='saveImgToLocal'>保存图片</view>
+    <view catchtap='cancelSave'>取消</view>
+  </view>
+</view>

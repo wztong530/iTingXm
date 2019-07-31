@@ -1,69 +1,84 @@
 {
   "pages": [
-   
     "pages/index/index",
-    "pages/confrimOrder/confrimOrder",
-    "pages/payRes/payRes",
-    "pages/editAddress/editAddress",
-    "pages/orderDetail/orderDetail",
-    "pages/wallet/wallet",
-    "pages/addressList/addressList",
-    "pages/mating/mating",
-    "pages/assembleDetail/assembleDetail",
-    "pages/moreAssemble/moreAssemble",
-    "pages/order/order",
+    "pages/picturePreview/picturePreview",
+    "pages/trafficDetail/trafficDetail",
+    "pages/uploadProgram/uploadProgram",
+    "pages/apply_form/apply_form",
+    "pages/discover/discover",
+    "pages/mydiscover/mydiscover",
+    "pages/live_list/live_list",
     "pages/my/my",
-    "pages/myProfit/myProfit",
+    "pages/chat/chat",
+    "pages/news/news",
+    "pages/studio/studio",
+    "pages/traffic/traffic",
+    "pages/addTraffic/addTraffic",
     "pages/chooseAddress/chooseAddress",
-    "pages/fansList/fansList",
-    "pages/channel/channel",
-    "pages/branchesOrder/branchesOrder",
-    "pages/qymating/qymating",
-    "pages/qyaddorder/qyaddorder",
-    "pages/qyOrder/qyOrder",
-        "pages/tz_wallet/tz_wallet",
-        "pages/tz_withdrawal/tz_withdrawal",
-        "pages/tz_paymentStatus/tz_paymentStatus",
-        "pages/binding_account/binding_account",
-        "pages/ptp/ptp",
-        "pages/invitation/invitation",
-        "pages/withdrawalDetails/withdrawalDetails",
-        "pages/tzfan/tzfan"
-        
+    "pages/information_list/information_list",
+    "pages/information_detail/information_detail",
+    "pages/diantai/diantai",
+    "pages/anchor_diantai/anchor_diantai",
+    "pages/anchor/anchor",
+    "pages/anchorHome/anchorHome",
+    "pages/integral/integral",
+    "pages/live_xm/live_/xm",
+    "pages/program_list/program_list",
+    "pages/comments_detail/comments_detail",
+    "pages/comments_list/comments_list",
+    "pages/discover_detail/discover_detail",
+    "pages/myAttention/myAttention",
+    "pages/releaseDynamic/releaseDynamic",
+    "pages/notice_list/notice_list",
+    "pages/order/order",
+    "components/player/player",
+    "pages/focusPublic/focusPublic",
+    "pages/dynamicDetail/dynamicDetail",
+    "pages/search/search"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
   "permission": {
-      "scope.userLocation": {
-        "desc": "你的位置信息将用于小程序位置接口的效果展示"
-      }
-    },
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "tabBar": {
-    "color": "#666",
-    "selectedColor": "#ff9500",
+    "color": "#000",
+    "selectedColor": "#FF6F4D",
     "backgroundColor": "#FFF",
-    "borderStyle": "rgba(221,221,221,0.50)",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/tabBar/sy@3x.png",
-        "selectedIconPath": "images/tabBar/sy_y@3x.png"
+        "iconPath": "images/tabBar/shouye-1.jpg",
+        "selectedIconPath": "images/tabBar/shouye.jpg"
       },
       {
-        "pagePath": "pages/order/order",
-        "text": "订单",
-        "iconPath": "images/tabBar/dd@3x.png",
-        "selectedIconPath": "images/tabBar/dd_h@3x.png"
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "images/tabBar/faxian.jpg",
+        "selectedIconPath": "images/tabBar/faxian-1.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "消息",
+        "iconPath": "images/tabBar/xiaoxi.jpg",
+        "selectedIconPath": "images/tabBar/xiaoxi-1.jpg"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
-        "iconPath": "images/tabBar/wd@3x.png",
-        "selectedIconPath": "images/tabBar/wd_h@3x.png"
+        "iconPath": "images/tabBar/wode.jpg",
+        "selectedIconPath": "images/tabBar/wode-1.jpg"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

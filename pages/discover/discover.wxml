@@ -1,0 +1,40 @@
+<!--pages/discover/discover.wxml-->
+<view class='top {{shipei?"sp":""}}'>
+  <view class='left'>
+    <image src='{{userInfo.avatarImageUrl}}' class='avatar'></image>
+    <view class='text'>
+      <view>{{myIntegral}}</view>
+      <view>积分</view>
+    </view>
+  </view>
+  <view class='mid'>
+    <image src='../../images/logo@3x.png'></image>
+  </view>
+  <view class='empty'></view>
+</view>
+<view class='empty_box {{shipei?"sp":""}}'></view>
+<block wx:if="{{activityList.length>0}}">
+  <view class='active_list'>
+    <view class='active_box' wx:for="{{activityList}}" wx:key='{{index}}' catchtap='enterPage' data-id='{{item.id}}'>
+      <view class='status {{item.activityStatus == 1?"active":""}}'>{{item.activityStatus == 0?"未开始":item.activityStatus == 1?"已开始":"已结束"}}</view>
+      <image class='bg' src='{{item.imgUrl}}' mode='aspectFill' lazy-load></image>
+      <view class='conts'>
+        <view class='title text-1-eclips'>{{item.activityTitle}}</view>
+        <view class='article text-1-eclips'>
+          <rich-text nodes='{{item.content}}'></rich-text>
+        </view>
+        <view class='time'>{{item.beginTime}}至{{item.endTime}}</view>
+        <text class='btn {{item.activityInStatus == 1?"already":item.activityStatus==2?"already":""}}'>{{item.activityInStatus == 1?'已报名':item.activityStatus==2?'已结束':'进入报名'}}</text>
+      </view>
+    </view>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+  </view> 
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有活动噢~</text>
+  </view>
+</block>
+<!-- 底部播放器 -->
+<player></player> 

@@ -1,0 +1,10 @@
+<!--pages/trafficDetail/trafficDetail.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='title'>
+  <text>路况</text>
+  <text>{{trafficDetail.position}}</text>
+</view>
+<view class='detail'>
+  <text>{{trafficDetail.anchorName}}</text><text>:</text>
+  <text>{{trafficDetail.description}}</text>
+</view>

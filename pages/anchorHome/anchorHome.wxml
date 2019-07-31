@@ -1,0 +1,114 @@
+<!--pages/anchorHome/anchorHome.wxml-->
+<header title='{{title}}' isBack='{{isBack}}' isBgColor='{{true}}'></header>
+<view class='back-head'>
+  <image class='avatar-img' mode='aspectFill' src='{{showMan.imgUrl}}' lazy-load></image>
+  <view class='mask'></view>
+  <view class='head-box'>
+    <view class='head-top'>
+      <view class='avatar'>
+        <image mode='aspectFill' src='{{showMan.imgUrl}}' lazy-load></image>
+      </view>
+      <view class='top-right'>
+        <block wx:if='{{showMan.id==userInfo.id}}'>
+          <view class='status' catchtap='enterPage' data-url='/pages/releaseDynamic/releaseDynamic'>发布动态</view>
+        </block>
+        <block wx:else>
+          <view bindtap='handleFocus' data-focusStatus='{{showMan.focusStatus}}' data-focusId='{{showMan.focusId}}'>
+            <view class='status' wx:if='{{showMan.focusStatus=="1"}}'>已关注</view>
+            <view class='status active' wx:else><text class='add'>+</text> <text>关注</text></view>
+          </view>
+        </block>
+        <view class='share' bindtap='sharepopup'>
+          <image src='../../images/icons/zhuanfa2@3x.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='name'>{{showMan.name}}</view>
+    <view class='intro'>{{showMan.introduction}}</view>
+    <view class='head-bottom'>
+      <view>
+        <view class='num'>{{showMan.focusNum}}</view>
+        <view class='text'>关注</view>
+      </view>
+      <!-- <view>
+        <view class='num'>88</view>
+        <view class='text'>获赞</view>
+      </view> -->
+    </view>
+  </view>
+</view>
+<!-- 选项卡 -->
+<view class='nav'>
+  <view class='nav-item {{selected==0?"selected":""}}' catchtap='select' data-index='0'>动态</view>
+  <view class='nav-filter'></view>
+  <view class='nav-item {{selected==1?"selected":""}}' catchtap='select' data-index='1'>i电台</view>
+</view>
+<!-- 动态 -->
+<view hidden='{{selected==1}}' style='width:100%;overflow:hidden;'>
+  <block wx:if='{{dynamicList.length>0}}'>
+    <view class='card' wx:for='{{dynamicList}}' wx:key='{{index}}' bindtap='enterPage' data-url='../dynamicDetail/dynamicDetail' data-id='{{item.id}}'>
+      <view class='card-date'>{{item.createDate}}
+      </view>
+      <view class='card-title text-2-eclips'>{{item.content}}</view>
+      <view class='card-imgsbox'>
+        <image wx:for='{{item.imgUrlList}}' wx:key='{{index}}' src='{{item}}' lazy-load mode='aspectFill'></image>
+      </view>
+      <view class='card_bottom'>
+        <view catchtap='likeDynamic' data-id='{{item.id}}' data-index='{{index}}' data-islike='{{item.isLike}}'>
+          <image class='card_icon' src='../../images/anchor/{{item.isLike?"dianzan2@3x":"dianzan1@3x"}}.png'></image>
+          <text class='card_text'>{{item.likeNum}}</text>
+        </view>
+        <view catchtap='sharepopup' data-dynamicid='{{item.id}}'>
+          <image class='card_icon' src='../../images/anchor/zhuanfa-2@3x.png'></image>
+          <text class='card_text'>{{item.forwardNum}}</text>
+        </view>
+        <view wx:if='{{showMan.id==userInfo.id}}' catchtap='deleteItem' data-index='{{index}}' data-id='{{item.id}}'>
+          <image class='card_icon' src='../../images/anchor/shanchu@3x.png'></image>
+          <text class='card_text'>删除动态</text>
+        </view>
+      </view>
+    </view>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+  </block>
+  <block wx:else>
+    <view class='nodata'>
+      <image src='../../images/kym.png'></image>
+      <text>~暂时还没有动态噢~</text>
+    </view>
+  </block>
+</view>
+<!-- i电台 -->
+<view hidden='{{selected==0}}' style='width:100%;overflow:hidden;'>
+  <block wx:if='{{anchorRadioList.length>0}}'>
+    <view class='radio_list' >
+      <view class='item' wx:for="{{anchorRadioList}}" wx:key='{{index}}'>
+        <view class='radio_box' catchtap='enterPage' data-url='/pages/program_list/program_list' data-id='{{item.id}}' data-programdetail='{{item}}'>
+          <image class='bg' mode='aspectFill' lazy-load src='{{item.imgUrl}}'></image>
+          <view class='conts'>
+            <image class='play_icon' src="../../images/bofan2.png" ></image>
+            <view class='listen_times'>
+              <view class="icon">
+                <text></text>
+                <text></text>
+                <text></text>
+              </view>
+              <text class='num'>{{item.playNum}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='radio_name text-1-eclips'>{{item.programsName}}</view>
+      </view>
+    </view>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+  </block>
+  <block wx:else>
+    <view class='nodata'>
+      <image src='../../images/kym.png'></image>
+      <text>~暂时还没有主播噢~</text>
+    </view>
+  </block>
+</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

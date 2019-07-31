@@ -1,0 +1,16 @@
+<!--pages/notice_list/notice_list.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<block wx:if="{{noticeList.length!==0}}">
+  <view class='notice_list' wx:for="{{noticeList}}">
+    <view class='item' >
+      <view class='left text-2-eclips'>{{item.content}}</view>
+      <view class='right'>{{item.noticeTime}}</view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有公告噢~</text>
+  </view>
+</block>

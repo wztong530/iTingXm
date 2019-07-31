@@ -1,0 +1,30 @@
+<!--pages/live_list/live_list.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<block wx:if="{{chatroomProgramList.length>0}}">
+  <view class='live_list' >
+    <view class='item' wx:for="{{chatroomProgramList}}" wx:key='{{index}}' bindtap='enterPage' data-uuid="{{item.uuid}}"  data-url='../studio/studio' >
+      <image class='img' src='{{item.imgUrl}}' mode='aspectFill' lazy-load></image>
+      <view class='conts'>
+        <view class='title'>{{item.programName}}</view>
+        <view class='anchor'>{{item.anchorName}}</view>
+        <view class='listen_times'>
+          <view class="icon">
+            <text class='bg_dark'></text>
+            <text class='bg_dark'></text>
+            <text class='bg_dark'></text>
+          </view>
+          <text class='num'>{{item.popularValue}}</text>
+        </view>
+      </view>
+      <view class='statue {{nowTime < item.startTime ? "live" : nowTime > item.endTime ? "lived" : "live_ing"}}'>{{nowTime < item.startTime ? "即将开始" : nowTime > item.endTime ? "已结束" : "直播中"}}</view>
+      <view class='time'>{{item.startTime}}-{{item.endTime}}</view>
+    </view>
+  </view>
+  <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有节目噢~</text>
+  </view>
+</block>

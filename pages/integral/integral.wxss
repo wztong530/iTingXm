@@ -1,0 +1,178 @@
+/* pages/integral/integral.wxss */
+page{
+  background-color: #fff;
+}
+.top{
+  position: relative;
+  width:100%;
+  height:292rpx;
+  margin-top:32rpx;
+  z-index: 1;
+}
+.top .top_bg{
+  width:690rpx;
+  height: 292rpx;
+  object-fit: contain;
+}
+.top .top_container{
+  width:690rpx;
+  height: 292rpx;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:#fff;
+}
+.top .top_container .t_left{
+  width:65%;
+  display: flex;
+  align-items: center;
+  padding-left: 28rpx;
+}
+.top .top_container .t_left .avatar {
+  width: 116rpx;
+  height: 116rpx;
+  overflow: hidden;
+  margin-right: 24rpx;
+}
+.top .top_container .t_left .avatar .avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.top .top_container .t_left .jifen>view:first-child{
+  font-size: 13px;
+}
+.top .top_container .t_left .jifen>view:last-child{
+  font-size:32px;
+}
+.top .top_container .t_right{
+  width:35%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 28rpx;
+}
+.top .top_container .t_right .btn_dh{
+  font-size:13px;
+  width:60px;
+  height:22px;
+  border-radius: 11px;
+  background-color: #fff;
+  color:var(--text);
+  text-align: center;
+  line-height: 22px;
+  margin-right: 5rpx;
+  margin-top:5rpx;
+}
+.point{
+  position:relative;
+  width:100%;
+  height: 54px;
+  box-shadow: 0 -6px 4px 0 rgba(255, 66, 52, 0.07);
+  background-color: #fff;
+  margin-top: -12rpx;
+  display: flex;
+  align-items: center;
+  z-index: 99;
+}
+
+.point .point_cont{
+  width:345px;
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  margin:auto;
+  margin-top:7px;
+  display: flex;
+  align-items: center;
+}
+.point .point_cont .point_img{
+  width:12px;
+  height: 12px;
+  margin:auto 22rpx;
+}
+.point .point_cont>text{
+  opacity: 0.8;
+  font-family: PingFangSC;
+  font-size: 13px;
+  color: #9b9b9b;
+}
+.list_box{
+  width:345px;
+  height: 54px;
+  border-bottom: 1px solid #e8e8e8;
+  margin:auto;
+  margin-top:18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.list_box .sub_title{
+  font-family: PingFangSC;
+  font-size:14px;
+  color:#000;
+}
+.list_box .sub_title>text{
+  margin-right: 10rpx;
+}
+.list_box .sub_title>text:nth-child(2){
+  font-size:22px;
+}
+.list_box .sub_title>text:nth-child(2),.live .sub_title>text:nth-child(3){
+  color:var(--text);
+}
+.scoreList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding:36rpx 28rpx;
+}
+.scoreList .card{
+  width:330rpx;
+  height: 296rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: PingFangSC;
+  padding:12rpx 0;
+  margin-bottom: 28rpx;
+}
+.scoreList .card .card_title{
+  font-size: 32rpx;
+  color:#333;
+  font-weight: 500;
+}
+.scoreList .card .card_subTitle{
+  font-size:28rpx;
+  color:#666;
+}
+.scoreList .card .card_progress{
+  width:134rpx;
+}
+.scoreList .card .card_detail{
+  font-size: 20rpx;
+  color:#999;
+}
+.scoreList .card .card_status{
+  width:140rpx;
+  height: 52rpx;
+  border-radius: 31rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 52rpx;
+  background-image:var(--linearTwo);
+  color:#fff;
+  box-shadow: 0 2px 4px 0 rgba(224, 14, 14, 0.15);
+}
+.scoreList .card .card_status.complete{
+  background-image: none;
+  background-color: #e5e5e5;
+  color:#999;
+  box-shadow: none;
+}

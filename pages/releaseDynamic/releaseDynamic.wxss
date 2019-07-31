@@ -1,0 +1,39 @@
+/* pages/releaseDynamic/releaseDynamic.wxss */
+page{
+  background: #ffffff;
+}
+textarea{
+  font-family: PingFangSC;
+  font-size: 14px;
+  padding: 30rpx;
+  height: 242rpx;
+  box-sizing: border-box;
+}
+.images_box{
+  display: flex;
+  padding:20rpx;
+  flex-wrap: wrap;
+}
+.images_box image{
+  width: 216rpx;
+  height: 216rpx;
+  padding: 10rpx;
+  border-radius: 4rpx;
+}
+.add_btn{
+  width: 690rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(255, 68, 53, 0.1);
+  background-image: var(--linearTwo);
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFangSC;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  position: fixed;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

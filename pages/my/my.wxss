@@ -2,18 +2,16 @@
 
 /* head */
 
-page {
+/* page {
   background: #fbfbfb;
   --imgDomain: 'https://mall.xpaik.com/photoServer/';
-}
+} */
 
 .back-head {
-  position: fixed;
-  top: 128rpx;
   left: 0;
   width: 100%;
   height: 560rpx;
-  z-index: -1;
+  position: relative;
 }
 
 .back-head  .avatar-img {
@@ -27,16 +25,26 @@ page {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background-image: var(--linearTwo);
+  height: 100%;
+}
+.back-head  .mask.active{
+  background-image: linear-gradient(-180deg, #1C1B26 0%, rgba(28,27,38,0.70) 62%);
 }
 
 .head-container {
+  position: absolute;
+  top: 128rpx;
+  left: 0;
+  height: 560rpx;
+  /* padding-top: 80rpx; */
+  box-sizing: border-box;
+  width: 100%;
+}
+.head-container .flex{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 560rpx;
-  padding-top: 80rpx;
-  box-sizing: border-box;
 }
 
 .head-container  .avatar {
@@ -100,8 +108,9 @@ page {
   color: #fff;
   text-align: center;
   border-radius: 100px;
-  background-image: linear-gradient(-90deg, #fa0 4%, #ff8000 100%);
-  box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 15px 15px 0 rgba(0,0,0,0.08);
+  
 }
 
 .head-container  .wx-login  .btn {
@@ -121,7 +130,8 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 48rpx 24rpx;
+  flex-wrap: wrap;
+  padding: 0 40rpx;
 }
 
 .group-container  .cell-row  .item {
@@ -133,6 +143,7 @@ page {
   box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
   border-radius: 17px;
   box-sizing: border-box;
+  margin-bottom: 20rpx;
 }
 
 .group-container  .cell-row  .item  .part1 {
@@ -165,6 +176,7 @@ page {
   font-size: 24rpx;
   color: rgba(123, 123, 123, 0.5);
   line-height: 28rpx;
+  padding-left: 65rpx;
 }
 
 .group-container  .cell-row  .item  .part2  .icon-xyb {

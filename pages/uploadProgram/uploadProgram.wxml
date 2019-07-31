@@ -1,0 +1,36 @@
+<!--pages/uploadProgram/uploadProgram.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='item' wx:for='{{programList}}' wx:key='{{index}}'>
+  <view class='label'>
+    <view>节目{{item.num}}</view>
+    <view catchtap='deleteItem' data-index='{{index}}'>删除</view>
+  </view>
+  <view class='upload_btn'>
+    <view class='left'>上传音频</view>
+    <view class='right'>
+      <input value='{{audio}}'></input>
+      <image src='../../images/iocn-fbdt@3x.png' data-index='{{index}}' bindtap='chooseAudio' data-type='1' wx:if='{{!audio}}'></image>
+      <text class='icon-xyb'></text>
+    </view>
+  </view>
+  <view class='upload_btn'>
+    <view class='left'>上传封面</view>
+    <view class='right'>
+      <image src='{{item.coverImg}}' lazy-load mode='aspectFill'></image>
+      <image src='../../images/iocn-fbdt@3x.png' data-index='{{index}}' bindtap='chooseImg' wx:if='{{!item.coverImg}}'></image>
+      <text class='icon-xyb'></text>
+    </view>
+  </view>
+  <view class='upload_btn'>
+    <view class='left'>输入标题</view>
+    <view class='right'>
+      <input value='{{item.title}}' data-index='{{index}}' bindinput='getInput' bindfocus='onFocus' bindblur='onBlur' adjust-position="{{false}}" ></input>
+      <text class='icon-xyb' wx:if='{{!isfocus}}'></text>
+    </view>
+  </view>
+</view>
+
+<view class='bottom'>
+  <view class='bottom_btn add_btn' bindtap='addProgram'>添加节目</view>
+  <view class='bottom_btn sub_btn' bindtap='submitProgram'>确认上传</view>
+</view>

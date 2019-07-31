@@ -1,129 +1,95 @@
-<!-- Edition -->
-
 <block>
-  <header title='{{title}}' isBack='{{isBack}}'></header>
+  <header title='{{title}}' isBack='{{isBack}}' isShipei='{{isShipei}}'></header>
   <view class='back-head'>
-    <image wx:if='{{user}}' class='avatar-img' mode='aspectFill' src='{{user.avatarUrl}}'></image>
-    <view class='mask'></view>
-  </view>
-
-  <view class='head-container'>
-    <block wx:if='{{user}}'>
-      <view class='avatar'>
-        <image class='avatar-img' mode='aspectFill' src='{{user.avatarUrl}}'></image>
-      </view>
-      <text class='name'>{{user.nickName}}</text>
-      <view class='account' wx:if='{{user.phone}}'>账号：{{user.phone}}</view>
-      <view class='auth-account' wx:else>
-        <text class='text'>填写手机号</text>
-        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn'></button>
-      </view>
-    </block>
-    <block wx:else>
-      <view class='avatar'>
-        <image class='avatar-img' mode='aspectFill' src='/images/icons/default-avatar.svg'></image>
-      </view>
-      <view class='wx-login'>
-        <text class='text'>微信登入</text>
-        <button class='btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo' lang='zh_CN'></button>
-      </view>
-    </block>
+    <image wx:if='{{user}}' class='avatar-img' mode='aspectFill' src='{{user.avatarImageUrl}}'></image>
+    <view class='mask {{user?"active":""}}'></view>
+    <view class='head-container'>
+      <block wx:if='{{user}}'>
+        <view class='flex'>
+          <view class='avatar'>
+            <image class='avatar-img' mode='aspectFill' src='{{user.avatarImageUrl}}'></image>
+          </view>
+          <text class='name'>{{user.nickName}}</text>
+          <view class='account' wx:if='{{user.phone}}'>账号：{{user.phone}}</view>
+          <view class='auth-account' wx:else>
+            <text class='text'>填写手机号</text>
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn'></button>
+          </view>
+        </view> 
+      </block>
+      <block wx:else>
+        <view class='flex'>
+          <view class='avatar'>
+          <image class='avatar-img' mode='aspectFill' src='/images/default-avatar.svg'></image>
+          </view>
+          <view class='wx-login'>
+            <text class='text'>微信登入</text>
+            <button class='btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo' lang='zh_CN'></button>
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
 
   <view class='group-container'>
     <view class='cell-row'>
-      <view class='item' bindtap='enterPage' data-url='../wallet/wallet' data-type='5'>
+      <view class='item' bindtap='enterPage' data-url='../integral/integral'>
         <view class='part1'>
-          <image mode='aspectFit' class='icon' src='/images/my/wdqb@3x.svg'></image>
-          <text class='text'>我的钱包</text>
+          <image mode='aspectFit' class='icon' src='/images/my/integral.svg'></image>
+          <text class='text'>我的积分</text>
         </view>
         <view class='part2'>
-          <text class='text'>My wallet</text>
+          <text class='text'>Integral</text>
           <text class='icon-xyb'></text>
         </view>
       </view>
-      <view class='item' bindtap='enterPage' data-url='../addressList/addressList' data-type='1'>
+      <view class='item' bindtap='enterPage' data-url='../mydiscover/mydiscover'>
         <view class='part1'>
-          <image mode='aspectFit' class='icon' src='/images/my/shdz@3x.svg'></image>
-          <text class='text'>收货地址</text>
+          <image mode='aspectFit' class='icon' src='/images/my/icon-fire.png'></image>
+          <text class='text'>我的活动</text>
         </view>
         <view class='part2'>
-          <text class='text'>Address</text>
+          <text class='text'>Activity</text>
           <text class='icon-xyb'></text>
         </view>
       </view>
-    </view>
-    <view class='cell-row'>
-
       <view class='item' catchtap='showpop'>
         <view class='part1'>
-          <image mode='aspectFit' class='icon' src='/images/my/kf@3x.svg'></image>
-          <text class='text'>官方客服</text>
+          <image mode='aspectFit' class='icon' src='/images/my/icon-anchor.png'></image>
+          <text class='text'>在线客服</text>
         </view>
         <view class='part2'>
-          <text class='text'>Customer service</text>
+          <text class='text'>Online Service</text>
           <text class='icon-xyb'></text>
         </view>
       </view>
-      <view class='item' >
-        <button wx:if='{{!user}}' class='hid-btn' open-type="getUserInfo" bindgetphonenumber="getUserInfo"></button>
-        <button wx:elif='{{!user.phone}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='hid-btn'></button>
-        <view catchtap='enterPage'  data-type='2'>
+      <!-- 主播端 -->
+      <view class='item' wx:if='{{user.anchorOrNot=="1"}}'>
+        <!-- <button wx:if='{{!user}}' class='hid-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        <button wx:elif='{{!user.phone}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='hid-btn'>Regional end</button> -->
+        <view catchtap='enterPage' data-url='../anchor/anchor'>
           <view class='part1'>
-            <image mode='aspectFit' class='icon' src='/images/my/dz@3x.svg'></image>
-            <text class='text'>网点端</text>
+            <image mode='aspectFit' class='icon' src='../../images/my/icon-zhubo.png'></image>
+            <text class='text'>主播端</text>
           </view>
           <view class='part2'>
-            <text class='text'>Network</text>
+            <text class='text'>Anchor</text>
             <text class='icon-xyb'></text>
           </view>
         </view>
       </view>
-    </view>
-    <view class='cell-row'>
-      <view class='item' >
-              <button wx:if='{{!user}}' open-type="getUserInfo" bindgetphonenumber="getUserInfo" class='hid-btn'></button>
-        <button wx:elif='{{!user.phone}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='hid-btn'></button>
-        <view bindtap='enterPage' data-type='3'>
-        <view class='part1'>
-          <image mode='aspectFit' class='icon' src='/images/my/qyd@3x.svg'></image>
-          <text class='text'>企业端</text>
-        </view>
-        <view class='part2'>
-          <text class='text'>Enterprise terminal</text>
-          <text class='icon-xyb'></text>
-        </view>
-        </view>
-      </view>
-      <view class='item' >
-                <button wx:if='{{!user}}' open-type="getUserInfo" bindgetphonenumber="getUserInfo" class='hid-btn'></button>
-        <button wx:elif='{{!user.phone}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='hid-btn'></button>
-        <view catchtap='enterPage'  data-type='4' >
-        <view class='part1'>
-          <image mode='aspectFit' class='icon' src='/images/my/tzd@3x.svg'></image>
-          <text class='text'>团长端</text>
-        </view>
-        <view class='part2'>
-          <text class='text'>Regimental end</text>
-          <text class='icon-xyb'></text>
-        </view>
-        </view>
-      </view>
-    </view>
 
-    <!-- <view class='cell-row'>
-            <view class='item'>
-                <view class='part1'>
-                    <image mode='aspectFit' class='icon' src='/images/icons/shht@3x.svg'></image>
-                    <text class='text'>商户后台</text>
-                </view>
-                <view class='part2'>
-                    <text class='text'>Backstage</text>
-                    <text class='icon-xyb'></text>
-                </view>
-                <navigator class='btn' target="miniProgram" open-type="navigate" app-id="wxcb5ab49f3c3b65fe"></navigator>
-            </view>
-        </view> -->
+      <view class='item' bindtap='enterPage' data-url='../myAttention/myAttention'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/my/icon-points.png'></image>
+          <text class='text'>我的关注</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>My concern</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+     </view>
   </view>
 
   <view class='edition'>版本号{{version}}</view>
@@ -135,17 +101,17 @@
     <view class="modal">
       <view class="topbar">
         <view class="title">请选择</view>
-        <image class="close" data-el='modal' catchtap='hidepop' src="../../images/icons/gb2@3x.svg"></image>
+        <image class="close" data-el='modal' catchtap='hidepop' src="../../images/gb2@3x.svg"></image>
       </view>
       <view class="content">
         <view class="block">
           <view class="tel" bindtap='callHotline'>
-            <image class="icon" src="../../images/icons/dhkf2@3x.svg"></image>
+            <image class="icon" src="../../images/dhkf2@3x.svg"></image>
             <view class="tip">电话客服
             </view>
           </view>
           <label for="chatbtn" class="line">
-            <image class="icon" src="../../images/icons/zxkf2@3x.svg"></image>
+            <image class="icon" src="../../images/zxkf2@3x.svg"></image>
             <view class="tip">在线客服
             </view>
           </label>
@@ -156,5 +122,5 @@
 </popup>
 <button hidden='true' id="chatbtn" open-type='contact'></button>
 
-
-<view class='gradual-box'></view>
+<!-- 底部播放器 -->
+<player></player> 

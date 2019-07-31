@@ -1,0 +1,34 @@
+<!--pages/discover_detail/discover_detail.wxml-->
+<header title="{{title}}" isBack="{{isBack}}" isBgColor='{{isBgColor}}'></header>
+<image class='bg' src='{{activityDetail.imgUrl}}' mode='aspectFill' lazy-load></image>
+<view class='info'>
+  <view class='left'>
+    <view class='name text-1-eclips'>{{activityDetail.activityTitle}}</view>
+    <view class='time'>{{activityDetail.beginTime}}-{{activityDetail.endTime}}</view>
+  </view>
+  <view class='right'>
+    <text>已有{{activityDetail.participateInNum}}人参与</text>
+    <view class='avatars'>
+      <image wx:for='{{avatarImageList}}' wx:key='{{index}}' src='{{item}}' mode='aspectFill' lazy-load></image>
+    </view>
+  </view>
+</view>
+<view class='detail_cont'>
+  <rich-text nodes='{{activityDetail.content}}'></rich-text>
+</view>
+<view class='bottom_opera'>
+  <label for='goActivityIn'>
+    <view class='apply_btn active' wx:if='{{activityDetail.activityStatus=="2"}}'>活动已结束</view>
+    <view class='apply_btn {{activityDetail.activityInStatus=="1"?"active":""}}' wx:else>{{activityDetail.activityInStatus=="1"?"已经报名":"报名参与"}}
+    </view>
+    <button id='goActivityIn' wx:if='{{activityDetail.activityInStatus=="0" && activityDetail.activityStatus!="2"}}' bindtap='enterPage' data-prompt='{{activityDetail.prompt}}'></button>
+  </label>
+  <view class='share_btn' bindtap='sharepopup'>
+    <image src='../../images/icon-fs@3x.png'></image>
+    <text>分享</text>
+  </view>
+</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

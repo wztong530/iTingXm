@@ -1,0 +1,284 @@
+/* pages/program_list/program_list.wxss */
+@keyframes roll{
+  0%{transform:rotateZ(0deg);}
+  100%{transform:rotateZ(360deg);}
+}
+page{
+  background-color: #fff;
+}
+.banner{
+  position: relative;
+}
+.banner .bg{
+  width: 750rpx;
+  height: 354rpx;
+  background: #eee;
+}
+.banner .diantai_info{
+  width: 690rpx;
+  height: 186rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 318rpx;
+  padding:30rpx 20rpx 24rpx;
+  box-sizing:border-box;
+}
+.banner .diantai_info .diantai_top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.banner .diantai_info .diantai_top .diantai_img{
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  margin-right: 14rpx;
+  backdrop-filter: #eee;
+}
+.banner .diantai_info .diantai_top .diantai_title{
+  font-family: PingFangSC-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 1px;
+}
+.banner .diantai_info .diantai_top .diantai_share{
+  width:37rpx;
+  height: 36rpx;
+  margin-top:-45rpx;
+}
+.banner .diantai_info .diantai_top .diantai_share>image{
+  width: 100%;
+  height: 100%;
+}
+.banner .diantai_info .diantaiIntroduction{
+  width: 650rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #999999;
+  letter-spacing: 1px;
+  margin-top: 10rpx;
+  line-height: 14px;
+}
+.empty_box{
+  height: 168rpx;
+  width: 100%;
+}
+.playing_box,
+.program_list .item{
+  width: 690rpx;
+  height: 180rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.playing_box{
+  margin: 0 auto 20rpx;
+  position: relative;
+}
+.program_list{
+  padding-bottom: 100rpx;
+}
+.program_list .item{
+  margin: 30rpx auto 0;
+  position: relative;
+}
+.left {
+  position: relative;
+  margin-right: 20rpx;
+}
+.program_list .item .left{
+  width: 140rpx;
+  height: 140rpx;
+}
+.left>image{
+  width: 140rpx;
+  height: 140rpx;
+  background: #eee;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 16rpx;
+  z-index: 99
+}
+.left .circle{
+  position: relative;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  margin-left: 40rpx;
+  z-index: 9;
+}
+.left .circle .black_circle{
+  width:100%;
+  height: 100%;
+}
+.left .circle .black_circle.rolling{
+  animation: roll 2s ease-in-out infinite;
+}
+.mid .program_name{
+  font-family: PingFangSC;
+  font-size: 16px;
+  color: #000000;
+}
+
+.mid .program_time{
+  font-family: PingFangSC;
+  font-size: 12px;
+  color: #666666;
+  margin: 4rpx 0 10rpx;
+}
+.mid .program_graphic{
+  display: flex;
+  align-items: center;
+}
+.listen_time{
+  font-family: PingFangSC-Regular;
+  font-size: 9px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  border-bottom-left-radius:16rpx;
+  border-bottom-right-radius:16rpx;
+  box-sizing:border-box;
+  display: flex;
+  padding: 0;
+}
+.listen_time .icon{
+  margin-right:10rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+.listen_time .icon>text{
+  display: inline-block;
+  width: 4rpx;
+  height: 24rpx;
+  background: #aaa;
+  border-radius: 4rpx;
+  margin: 0 5rpx;
+  animation: myfirst 2s;
+  -webkit-animation: myfirst 2s;
+  animation-iteration-count:infinite;
+
+}
+.listen_time .icon>text:nth-child(2){
+  animation-delay:0.7s
+}
+.listen_times .icon>text:nth-child(3){
+  animation-delay:1.4s
+}
+.mid .program_graphic .pg_item{
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.mid .program_graphic .pg_item image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right:10rpx; 
+}
+.mid .program_graphic .pg_item text{
+  font-family: PingFangSC;
+  font-size: 10px;
+  color:#999999;
+}
+.right{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 46rpx;
+  box-shadow: 0 4rpx 8rpx 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right .play_icon{
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin-top:-20%;
+  margin-left: -20%;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.right .play_icon image{
+  width:32rpx;
+  height: 40rpx;
+  margin: 0 auto;
+}
+.right text{
+  display: inline-block;
+  background-image: var(--linearTwo);
+  width: 4rpx;
+  border-radius: 8rpx;
+}
+
+.right text:nth-child(1),
+.right text:nth-child(5){
+  height: 20rpx;
+}
+.right text:nth-child(2),
+.right text:nth-child(4){
+  height: 30rpx;
+}
+.right text:nth-child(3){
+  height: 40rpx;
+}
+.playing_box .mid .program_name,
+.playing_box .mid .program_time,
+.playing_box .mid .program_graphic .pg_item text{
+  color: var(--text);
+}
+.label{
+  padding-left: 30rpx;
+  padding-top: 20rpx;
+}
+.nodata_label{
+ padding-top:176rpx;
+ padding-left: 30rpx;
+}
+.nodata{
+  height: inherit;
+  padding-top: 82rpx;
+}
+.nodata image {
+  width: 394rpx;
+  height: 286rpx;
+  margin-bottom: 20rpx;
+}
+
+.upload_btn{
+  width: 690rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(255, 68, 53, 0.1);
+  background-image: var(--linearTwo);
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFangSC;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  position: fixed;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.listen_time .icon.play_color text{
+  background-image: var(--linearTwo);
+}

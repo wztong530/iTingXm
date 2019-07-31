@@ -1,0 +1,31 @@
+<!--pages/diantai/diantai.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<block wx:if="{{anchorRadioList.length>0}}">
+  <view class='label'>我的电台</view>
+  <view class='hotRecommended'>
+    <view wx:for='{{anchorRadioList}}' wx:key='{{index}}' class='item' catchtap='enterPage' data-url="../program_list/program_list" data-id='{{item.id}}' >
+      <view class='radio_box'>
+        <image class='bg' src='{{item.imgUrl}}' mode='aspectFit' lazy-load></image>
+        <view class='conts'>
+          <image class='play_icon' src="../../images/bofan2.png"></image>
+          <view class='listen_times'>
+            <view class="icon">
+              <text></text>
+              <text></text>
+              <text></text>
+            </view>
+            <text class='num'>{{item.playNum}}</text>
+          </view>
+        </view>
+      </view>
+      <text class='radio_name text-1-eclips'>{{item.programsName}}</text>
+    </view>
+  </view>
+  <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text> 暂时没有内容噢～</text>
+  </view>
+</block>

@@ -1,0 +1,109 @@
+<!--pages/studio/studio.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<view class='traffic_box' wx:if='{{trafficChat}}'>
+  <view>
+    <text class='title'>路况</text>
+    <text class='text text-1-eclips'>{{trafficChat.position}}</text>
+  </view>
+  <view class='icon'>></view>
+</view>
+<view class='population'>
+  <view class='left'>
+    <text>人气：{{chatInfo.popularNum}}</text>
+  </view>
+  <view class='right'>
+    <view class='avatars'>
+      <image class='avatar' src='{{item.headImg}}' wx:for='{{chatInfo.userInfos}}' wx:key='{{index}}' mode='aspectFit' lazy-load></image>
+      <!-- <view class='dots'>
+        <text></text>
+        <text></text>
+        <text></text>
+      </view> -->
+    </view>
+  </view>
+</view>
+<!-- 直播播放 -->
+<audio  id='myAudio' src='{{programDetail.audioUrl}}' ></audio>
+
+<view class='conts {{trafficChat?"traffic":""}}'>
+  <view class='program' wx:if='{{!trafficChat}}'>
+    <view class='now'>本期节目：{{programDetail.programName}}</view>
+    <view class='next'>下个节目：{{programDetail.nextProgram}}</view>
+  </view>
+
+  <view class='chat' bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
+    <scroll-view class="left" scroll-y scroll-top='{{scrollTop}}'>
+      <view class='tips' hidden='{{!showTips}}'>
+        <view></view>
+        <view></view>
+        <view></view>
+      </view>
+      <view class='hasNomore' wx:if='{{isNoMore}}'>今天就到这里～</view>
+      <view class='dialog_box' wx:for="{{msgList}}"  wx:key='{{index}}' catchtap='showPop' data-type="0" data-othername='{{item.userName}}' data-otheruuid='{{item.userUuid}}' data-otheruserid='{{item.userId}}'>
+        <view class='role {{item.userUuid==programDetail.anchorUuid || item.userUuid==programDetail.directorUuid?"sys":""}}'>{{item.userUuid==programDetail.anchorUuid ? "主播：" : item.userUuid==programDetail.directorUuid ? "导播：" : ""}}{{item.userUuid==userInfo.uuid?"我":item.userName}}
+          <text class='integral' wx:if='{{item.userUuid!=programDetail.anchorUuid&&item.userUuid!=programDetail.directorUuid}}'>{{item.integral}} 积分</text>
+        </view>
+        <view class='dialog'>{{item.message}}</view>
+      </view>
+    </scroll-view>
+    <view class='right'>
+      <view class='opera'>
+        <view class='item' wx:if='{{anchorList.length==1}}' catchtap='enterPage' data-url='../chat/chat' data-type='1'>
+          <image src='../../images/icons/siliao@3x.png'></image>
+        </view>
+        <view class='item' wx:else>
+          <!-- 选择器 -->
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{anchorList}}" range-key="anchorName">
+            <image src='../../images/icons/siliao@3x.png'></image>
+          </picker>
+        </view>
+        <view class='item'>
+          <image src='../../images/icons/{{programDetail.isLike?"dz-1.png":"weidianzan1@3x.png"}}' catchtap='addLike'></image>
+          <text>{{programDetail.likeNum}}</text>
+        </view>
+        <view class='item' bindtap='sharepopup'>
+          <label>
+            <image src='../../images/icons/zhuanfa1@3x.png'></image>
+          </label>
+          <text>{{programDetail.forwardNum}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 发送消息 -->
+<view class='send_box' style='bottom:{{bottom}}px'>
+  <view class='left'>
+    <input type='text' value='{{inputValue}}' bindinput='getInput'  adjust-position="{{false}}" bindfocus="focus" bindblur="blur" placeholder='说点什么吧...' placeholder-style='font-size:14px;color:#cccccc;'></input>
+    <text class='line'></text>
+    <text class='send' bindtap='sendMsg'>发送</text>
+  </view>
+  <!-- <image src='../../images/icon-image@3x.png' class='add'></image> -->
+</view>
+
+<!-- 互动弹窗 -->
+<popup isShow='{{isShow}}' isPopup='{{isPopup}}' catchhide='hidePopup' data-type="0">
+  <view class='pop_conts'>
+    <view class='title'>与{{othername}}互动</view>
+    <view class='opera' catchtap='enterPage' data-url='../chat/chat'>私聊</view>
+    <view class='opera' catchtap='showPop' data-type="1" wx:if='{{userInfo.uuid==programDetail.anchorUuid}}'>赠送积分</view>
+    <view class='opera cancel' catchtap='hidePopup' data-type="0">取消</view>
+  </view>
+</popup>
+
+<!-- 赠送积分 -->
+<view class='PresentExp' wx:if="{{isPopup_two}}">
+  <view class='mask' wx:if="{{isPopup_two}}" catchtap='hidePopup' data-type="1"></view>
+  <view class='pop_box' wx:if="{{isShow_two}}">
+    <view class='jf_title'>赠送积分</view>
+    <input type="number" placeholder='输入赠送积分' bindinput='getInput' value='{{inputValue}}'></input>
+    <view class='btn'>
+      <view class='cancel' catchtap='hidePopup' data-type="1">取消</view>
+      <view class='confirm' catchtap='hidePopup' data-type="2">赠送</view>
+    </view>
+  </view>
+</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

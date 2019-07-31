@@ -7,7 +7,7 @@
     <text>当前地址</text>
   </view>
   <view class='curr-ad'>
-    <text  bindtap='select' data-type='0' style='flex:1;'>{{cur.shippingAddr}}</text>
+    <text  bindtap='select' data-type='0' style='flex:1;'>{{cur.address}}</text>
     <view class='refresh' bindtap='refresh'><image mode='aspectFit' src='/images/cxdw@3x.png'></image><text>重新定位</text></view>
   </view>
   <view class='title'>

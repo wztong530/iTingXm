@@ -1,0 +1,40 @@
+<!--pages/comments_detail/comments_detail.wxml-->
+<header title='{{title}}' isBack="{{isBack}}"></header>
+<view class='item'>
+  <view class='left'>
+    <image class='avatar' src='{{comment.avatarImageUrl}}'></image>
+  </view>
+  <view class='right' bindtap='replyContent'>
+    <view class='name'>{{comment.nickName}}</view>
+    <view class='time'>{{comment.createDate}}</view>
+    <view class='cont'>
+     {{comment.content}}
+    </view>
+    <view class='look_more' catchtap='showReply' wx:if='{{replyList.length>0}}'>{{isShow?'收起':'展开'}}{{comment.replyCount}}条回复</view>
+  </view>
+</view>
+<view hidden='{{!isShow}}'>
+  <view class='reply' wx:for="{{replyList}}" wx:key='{{index}}'>
+    <view class='reply_item'>
+      <view class='left'>
+        <image class='avatar' src='{{item.replyAvatarImageUrl}}'></image>
+      </view>
+      <view class='right'>
+        <view class='reply_top text-1-eclips'>
+        <text class='name'>{{item.replyNickName}}</text>回复<text class='name'>{{item.nickName}}</text></view>  
+        <view class='cont'>
+          {{item.content}}
+        </view>
+        <view class='time'>{{item.createDate}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</view>
+<view class='send_box' wx:if='{{showReply}}' style='bottom:{{bottom}}px'>
+  <view class='left'>
+    <input value='{{replyComment}}' bindinput='getInput' focus adjust-position="{{false}}" bindfocus="focus" bindblur="blur" placeholder='回复:{{comment.nickName}}' placeholder-style='color:#999;font-size:14px;'></input>
+    <text class='line'></text>
+    <text class='send' bindtap='sendComment'>回复</text>
+  </view>
+</view>

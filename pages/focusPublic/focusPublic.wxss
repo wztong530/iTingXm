@@ -1,0 +1,45 @@
+/* pages/focusPublic/focusPublic.wxss */
+page{
+  background-color: #fff;
+}
+/* 公众号组件 */
+.show_oa{
+  width: 750rpx;
+  height:84px;
+}
+.arrow_top{
+  width: 706rpx;
+  height: 70rpx;
+  border-radius: 51rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(255, 68, 53, 0.1);
+  background-image: var(--linearTwo);
+  font-family: PingFangSC;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  margin:50rpx auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 30rpx;
+  box-sizing: border-box;
+}
+.lingdang,.lingdang>image{
+  width:46rpx;
+  height: 44rpx;
+  margin-left: 10rpx;
+}
+.lingdang+view{
+  margin-left: -10rpx;
+}
+@keyframes toUp{
+  0%{margin-top: 5rpx}
+  50%{margin-top: -4rpx;}
+  100%{margin-top: 5rpx;}
+}
+.arrow,.arrow>image{
+  width:92rpx;
+  height: 44rpx;
+  animation: toUp 1.2s ease-in-out infinite;
+}

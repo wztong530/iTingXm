@@ -1,0 +1,27 @@
+<!--pages/myAttention/myAttention.wxml-->
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<block wx:if="{{myFocusList.length>0}}">
+  <view class='item' wx:for="{{myFocusList}}" wx:key='{{index}}'>
+    <image class='avatar' src='{{item.imgUrl}}' bindtap='enterPage' data-id='{{item.id}}' mode='aspectFill' lazy-load></image>
+    <view class='conts'>
+      <view class='box_top'>
+        <view class='name'>{{item.name}}</view>
+      </view>
+      <view class='chat text-1-eclips'>
+        {{item.introduction}}
+      </view>
+    </view>
+    <view class='status' bindtap='handleFocus' data-focusStatus='{{item.focusStatus}}' data-id='{{item.id}}' data-index='{{index}}' data-focusId='{{item.focusId}}'>
+      <text class='attention' wx:if='{{item.focusStatus == "0"}}'>+关注</text>
+      <text class='cancel_attention' wx:else>已关注</text>
+    </view>
+  </view>
+  <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有主播噢~</text>
+  </view>
+</block>
+

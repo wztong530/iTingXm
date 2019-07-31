@@ -10,12 +10,12 @@ import {
 var api = new Request()
 var app = getApp()
 
-// 引入SDK核心类
-// var QQMapWX = require('../../sdk/qqmap-wx-jssdk.js');
-// // 实例化API核心类
-// var qqmapsdk = new QQMapWX({
-//   key: config.mapkey 
-// });  
+//引入SDK核心类
+var QQMapWX = require('../../sdk/qqmap-wx-jssdk.js');
+// 实例化API核心类
+var qqmapsdk = new QQMapWX({
+  key: config.mapkey 
+});  
 
 
 Page({
@@ -36,22 +36,60 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getLocation({
+      success: res => {
+        console.log(res)
+      },
+    })
     this.loaddata()
   },
   loaddata(){
+    wx.showLoading()
+    api.request({
+      url:Url.getcuradd,
+      data: app.globalData.location,
+      success:res=>{
+        console.log("cur:::",res)
+        this.setData({
+          cur:res.data.data.result
+        })
+      }    
+    })
+    //this.getlocation()
     api.request({
       url: Url.chooseList,
       data: app.globalData.location,
       success:res=>{
         console.log(res)
+        wx.hideLoading()
         var arr = res.data.data
-        if(arr.length > 0){
-          this.setData({
-            list: arr.slice(1, arr.length),
-            cur: arr[0],
-            filterList: arr.slice(1, arr.length)
+        if (arr.length) {
+          arr.map((item) => {
+            item.allfloor = item.floor.split(",")
+           // item.floor = item.floor.split(",")
           })
         }
+        if(arr.length > 0){
+          this.setData({
+            list: arr,
+            filterList: arr
+          })
+        }
+      }
+    })
+  },
+  getlocation(){
+    var loc = app.globalData.location
+    qqmapsdk.reverseGeocoder({
+      location: {
+        latitude:loc.lat,
+        longitude:loc.lon
+      },
+      success:res=>{
+        console.log(res)
+        this.setData({
+          cur: res.result
+        })
       }
     })
   },
@@ -114,6 +152,9 @@ Page({
       filterList:arr
     })
   },
+  refresh(){
+    this.loaddata()
+  },
   //点击搜索
   confirm(e){
     var val = e.detail.value
@@ -152,17 +193,24 @@ Page({
         thisData = this.data,index
         console.log(page)
     if(type == 0){
-      page.setData({
-        ['data.shippingAddr']: thisData.cur.shippingAddr,
-        ['data.lat']: thisData.cur.lat,
-        ['data.lon']: thisData.cur.lon
-      })
+      return
+      // page.setData({
+      //   ['data.shippingAddr']: thisData.cur.shippingAddr,
+      //   ['data.lat']: thisData.cur.lat,
+      //   ['data.lon']: thisData.cur.lon,
+      //   ['data.houseNum']: thisData.cur.houseNum,
+      //   ['data.allFloor']: thisData.cur.allfloor,
+      //   ['data.addressId']: thisData.cur.id
+      // })
     } else {
       index = e.currentTarget.dataset.index
       page.setData({
-        ['data.shippingAddr']: thisData.list[index].shippingAddr,
-        ['data.lat']: thisData.list[index].lat,
-        ['data.lon']: thisData.list[index].lon
+        ['data.shippingAddr']: thisData.filterList[index].shippingAddr,
+        ['data.lat']: thisData.filterList[index].lat,
+        ['data.lon']: thisData.filterList[index].lon,
+        ['data.houseNum']: thisData.filterList[index].houseNum,
+        ['data.allFloor']: thisData.filterList[index].allfloor,
+        ['data.addressId']: thisData.filterList[index].id
       })
     }
     wx.navigateBack({

@@ -1,0 +1,115 @@
+<!--pages/program_list/program_list.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='banner'>
+  <image class='bg' src='{{programdetail.siftImgUrl}}' lazy-load mode='aspectFill'></image>
+  <view class='diantai_info'>
+    <view class='diantai_top'>
+      <view class=''>
+        <image class='diantai_img' src='{{programdetail.imgUrl}}' lazy-load mode='aspectFill'></image>
+        <text class='diantai_title'>{{programdetail.programsName}}</text>
+      </view>
+      <view class='diantai_share' bindtap='sharepopup'>
+        <image src='../../images/anchor/zhuanfa001.png'></image>
+      </view>
+    </view>
+    <view class='diantaiIntroduction text-2-eclips'>
+      <text>{{programdetail.intro}}</text>
+    </view>
+  </view>
+</view>
+<!-- 正在播放的节目 -->
+<view class='empty_box'></view>
+<view class='playing_box' wx:if='{{playingProgram.id}}'>
+  <view class='left'>
+    <image src='{{playingProgram.imgUrl}}' lazy-load mode='aspectFill'></image>
+    <view class='circle'>
+      <image class='black_circle {{isplay?"rolling":""}}' src='../../images/black_circle.png' mode='aspectFit' lazy-load></image>
+    </view>
+  </view>
+  <view class='mid'>
+    <view class='program_name'>{{playingProgram.programsTitle}}</view>
+    <view class='program_time'>更新时间: {{playingProgram.pubtime}}</view>
+    <view class='program_graphic'>
+      <view class='pg_item listen_time'>
+        <view class="icon play_color">
+          <text></text>
+          <text></text>
+          <text></text>
+        </view>
+        <text class='num'>{{playingProgram.playNum}}</text>
+      </view>
+      <view class='pg_item' catchtap='likePrograms' data-id='{{playingProgram.id}}' data-likestatus='{{playingProgram.likeStatus}}' data-likenum='{{playingProgram.likeNum}}' data-type='1'>
+        <image src='../../images/anchor/{{playingProgram.likeStatus=="1"?"dianzan2@3x.png":"dianzan002.png"}}'></image>
+        <text>{{playingProgram.likeNum}}</text>
+      </view>
+      <view class='pg_item'  catchtap='enterPage' data-id='{{playingProgram.id}}' data-url="../comments_list/comments_list">
+        <image src='../../images/comment@3x.png'></image>
+        <text>{{playingProgram.commentsNum}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='right' bindtap='controlPlayer'>
+    <view class='play_icon' wx:if='{{isplay}}'>
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+    </view>
+    <view class='play_icon' wx:else>
+      <image src='../../images/play_list.png'></image>
+    </view>
+  </view>
+</view>
+<!-- 节目列表 -->
+<view class='label'>节目列表</view>
+<block wx:if="{{programsList.length>0}}">
+  <view class='program_list' >
+    <view class='item' wx:for="{{newprogramsList}}" wx:key='{{index}}'>
+      <view class='left'>
+        <image class='bg' src='{{item.imgUrl}}' lazy-load mode='aspectFill'></image>
+      </view>
+      <view class='mid'>
+        <view class='program_name'>{{item.programsTitle}}</view>
+        <view class='program_time'>更新时间: {{item.pubtime}}</view>
+        <view class='program_graphic'>
+          <view class='listen_time pg_item'>
+            <view class="icon">
+              <text></text>
+              <text></text>
+              <text></text>
+            </view>
+            <text class='num'>{{item.playNum}}</text>
+          </view>
+          <view class='pg_item' catchtap='likePrograms' data-id='{{item.id}}' data-likestatus='{{item.likeStatus}}' data-likenum='{{item.likeNum}}' data-type='0'>
+            <image src='../../images/anchor/{{item.likeStatus=="1"?"dianzan2@3x.png":"dianzan001.png"}}'></image>
+            <text>{{item.likeNum}}</text>
+          </view>
+          <view class='pg_item'  catchtap='enterPage' data-id="{{item.id}}" data-url="../comments_list/comments_list">
+            <image src='../../images/comment.png'></image>
+            <text>{{item.commentsNum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='right' bindtap='handlePlay' data-index='{{index}}' >
+        <view class='play_icon'>
+          <image src='../../images/icons/shanchu@3x.png' catchtap='deleteItem' data-index='{{index}}' data-id='{{item.id}}' style='width:42rpx;' wx:if='{{programdetail.oneselfRadio=="1"&&way=="1"}}'></image>
+          <image src='../../images/play_list.png' wx:else></image>
+        </view>
+      </view>
+    </view>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+  </view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>亲，暂无节目～</text>
+  </view>
+</block>
+<!-- 上传节目 -->
+<view class='upload_btn' catchtap='enterPage' data-id='{{id}}' data-url="../uploadProgram/uploadProgram" wx:if='{{programdetail.oneselfRadio=="1"&&way=="1"}}'>上传节目</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

@@ -1,0 +1,59 @@
+<!--pages/chat/chat.wxml-->
+<header style='position:fixed;top:0;' title='{{title}}' isBack='{{isBack}}'></header>
+<view class='container' bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend'>
+  <view class='tips' hidden='{{!showTips}}'>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+  <view class='chat_box'>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>最初的最初在这里～</view>
+    <!-- <view class='time' wx:if='{{isNoMore}}'>{{firstTime}}</view> -->
+    <!-- 聊天记录 -->
+    <!-- <view class='item' wx:for="{{chatLogList}}" wx:key='{{index}}'>
+      <view class='time'>1111111</view>
+      <view class='conts' wx:if="{{item.userUuid == otheruuid}}" >
+        <image class='avatar' src='{{item.userImage}}'></image>
+        <view class='dialog_box'>
+          <view class='lf_triangle'></view>
+          <view class='dialog'>{{item.message}}</view>   
+        </view>
+      </view>
+      <view class='conts my' wx:else>     
+        <view class='dialog_box'>
+          <view class='dialog'>{{item.message}}</view>
+          <view class='rt_triangle'></view>
+        </view>
+        <image class='avatar' src='{{item.userImage}}'></image>
+      </view>
+    </view> -->
+
+    <!-- 聊天记录 -->
+    <view class='item' wx:for="{{newchatLogList}}" wx:key='{{index}}'>
+      <view class='time' wx:if='{{item.showTime}}'>{{item.sendTime}}</view>
+      <view class='conts' wx:if="{{item.fromUserId == otheruuid}}" >
+        <image class='avatar' src='{{item.userImage}}'></image>
+        <view class='dialog_box'>
+          <view class='lf_triangle'></view>
+          <view class='dialog'>{{item.message}}</view>   
+        </view>
+      </view>
+      <view class='conts my' wx:else>     
+        <view class='dialog_box'>
+          <view class='dialog'>{{item.message}}</view>
+          <view class='rt_triangle'></view>
+        </view>
+        <image class='avatar' src='{{item.userImage}}'></image>
+      </view>
+    </view>
+    <view id='flag'></view>
+  </view>
+</view>
+<view class='send_box' style='bottom:{{bottom}}px'>
+  <image src='../../images/icon-image@3x.png' class='add'></image>
+  <view class='right'>
+    <input type='text' value='{{newMsg}}' bindinput='getInput' adjust-position="{{false}}" bindfocus="focus" bindblur="blur"></input>
+    <text class='line'></text>
+    <text class='send' bindtap='sendMsg'>发送</text>
+  </view>
+</view>

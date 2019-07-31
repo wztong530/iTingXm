@@ -1,0 +1,12 @@
+<!--pages/addTraffic/addTraffic.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='label'>路况位置</view>
+<view class='choose' catchtap='chooseAddr'>
+  <view class='left' style='{{position?"color:black;":""}}'>{{position?position:'请选择'}}</view>
+ <text class='icon-xyb'></text>
+</view>
+<view class='label'>问题描述</view>
+<view class='describe'>
+  <textarea placeholder='请输入您要描述的问题…' value='{{description}}' bindinput='getInput'></textarea>
+</view>
+<view class='add_btn' bindtap='addTraffic'>提交</view>

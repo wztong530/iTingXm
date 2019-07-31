@@ -2,7 +2,7 @@
     <view class='slot-wrapper {{isShow?"show":"hide"}}' catchtap='preventEvent'>
         <view class='head'>
             <text class='text'>请选择</text>
-            <image class="close" data-el='modal' catchtap='closePopup' src="../../images/icons/gb2@3x.svg"></image>
+            <image class="close" data-el='modal' catchtap='closePopup' src="../../images/icons/guanbi-3@3x.png"></image>
         </view>
         <view class='main'>
             <view class='item'>
@@ -12,7 +12,7 @@
             </view>
             <view class='item' bindtap='sharePyq'>
                 <image mode='aspectFill'  class='icon' src='/images/sc@3x.svg'></image>
-                <text class='text'>生成链接，发朋友圈</text>
+                <text class='text'>生成图片，发朋友圈</text>
             </view>
         </view>
     </view>

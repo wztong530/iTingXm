@@ -12,10 +12,11 @@
   z-index: 9999;
 }
 .bg{
-  background-color: #2E2E2E;
+  background-color: transparent;
 }
 .emptybox{
   height: 88rpx;
+  box-shadow: 0 0.5px 0 0 #d5d5db, 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 }
 .header text{
   font-family: PingFangSC-Medium;
@@ -29,11 +30,27 @@
   left: 8rpx;
   width: 40rpx;
   height: 40rpx;
-  background: #fff;
   padding: 20rpx;
   top:50%;
   margin-top:-20rpx;
 }
-.bg .back{
-  background: #2E2E2E;
+.header .back.sp{
+  margin-top: 5rpx;
+}
+.back_index{
+  position: absolute;
+  left: 8rpx;
+  width: 60rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size:16px;
+  color:#333;
+  white-space: nowrap;
+  padding: 20rpx;
+  top:50%;
+  margin-top:-20rpx;
+}
+.header .back_index.sp{
+  margin-top: 5rpx;
 }

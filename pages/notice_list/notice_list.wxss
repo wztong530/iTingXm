@@ -1,0 +1,26 @@
+/* pages/notice_list/notice_list.wxss */
+page{
+  background: #ffffff;
+}
+.notice_list .item{
+  padding: 18rpx 30rpx;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item .left{
+  opacity: 0.8;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #000000;
+  letter-spacing: 0;
+  width: 400rpx;
+}
+.item .right{
+  opacity: 0.8;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+}

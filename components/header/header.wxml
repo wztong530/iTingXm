@@ -1,9 +1,8 @@
-  <view class='header {{isBgColor?"bg":" "}}' style='padding-top:{{systemData.statusBarHeight}}px' >
+  <view class='header {{isBgColor?"bg":""}}' style='padding-top:{{isShipei?systemData.statusBarHeight + 8:systemData.statusBarHeight}}px' >
     <text class='title'>{{title}}</text>
     <view wx:if='{{isBack}}' class='img'>
-      <image class='back' bindtap='backPre' hidden='{{isBgColor}}' src='../../images/back.png'></image>
-      <image class='back' bindtap='backPre' hidden='{{!isBgColor}}' src='../../images/icon-return-white.svg'></image>
+      <view class='back_index {{isShipei?"sp":""}}' wx:if='{{isBackIndex}}' bindtap='backPre'>返回首页</view>
+      <image class='back {{isShipei?"sp":""}}' bindtap='backPre'  src='../../images/back.png' wx:else></image>
     </view>
-    
   </view>
-  <view class='emptybox' style='padding-top:{{systemData.statusBarHeight}}px'></view>
+  <view class='emptybox' style='padding-top:{{isShipei?systemData.statusBarHeight + 8:systemData.statusBarHeight}}px' wx:if='{{!isBgColor}}'></view>

@@ -1,0 +1,37 @@
+<!--pages/diantai/diantai.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='productsRecommended'>
+  <swiper indicator-dots="{{false}}" autoplay="{{true}}" interval="{{interval}}" duration="{{duration}}" circular next-margin="23px">
+    <block wx:for="{{recommendList}}" wx:key='{{index}}' >
+      <swiper-item bindtap='enterPage' data-url="../program_list/program_list" data-id='{{item.id}}' data-programdetail='{{item}}'>
+        <view class='conts'>
+          <image src="{{item.siftImgUrl}}" class="img" mode='aspectFit' lazy-load />
+          <view class='title text-1-eclips'>{{item.programsName}}</view>
+          <view class='con text-1-eclips'>{{item.intro}}</view>
+          <view class='class'>精品推荐</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='label'>热门推荐</view>
+<view class='hotRecommended'>
+  <view wx:for='{{radioList}}' wx:key='{{index}}' class='item' catchtap='enterPage' data-url="../program_list/program_list" data-id='{{item.id}}' data-programdetail='{{item}}' >
+    <view class='radio_box'>
+      <image class='bg' mode='aspectFit' lazy-load src='{{item.imgUrl}}'></image>
+      <view class='conts'>
+        <image class='play_icon' src="../../images/bofan2.png" ></image>
+        <view class='listen_times'>
+          <view class="icon">
+            <text></text>
+            <text></text>
+            <text></text>
+          </view>
+          <text class='num'>{{item.playNum}}</text>
+        </view>
+      </view>
+    </view>
+    <text class='radio_name text-1-eclips'>{{item.programsName}}</text>
+  </view>
+</view>
+<view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>

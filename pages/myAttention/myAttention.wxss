@@ -1,0 +1,86 @@
+/* pages/myAttention/myAttention.wxss */
+/* pages/news/news.wxss */
+
+.item {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  height: 160rpx;
+  align-items: center;
+  justify-content:center;
+  padding:0 30rpx;
+  box-sizing:border-box;
+}
+.item image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background-color: #eee;
+}
+.item .conts{
+  border-bottom: 1px solid #F5F5F5;
+  width: 384rpx;
+  height: 160rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin-left:20rpx;
+  padding-right:78rpx;
+}
+.item .conts .box_top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:none;
+}
+.item .conts .box_top .name{
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #333333;
+}
+.item .conts .box_top .time{
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #999999;
+}
+.item .conts .chat{
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #666666;
+  width: 384rpx;
+}
+.item .status{
+  height:100%;
+  border-bottom: 1px solid #F5F5F5;
+  display:flex;
+align-items:center;
+}
+.item .status .attention{
+  width: 108rpx;
+  height: 44rpx;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(255,114,88,0.15);
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  display:inline-block;
+  line-height: 44rpx;
+  background-image: var(--linearTwo);
+  border-radius: 25rpx;
+  box-sizing: border-box;
+}
+
+.item .status .cancel_attention{
+  width: 108rpx;
+  height: 44rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #979797;
+  letter-spacing: 0;
+  border: 1px solid #979797;
+  display:inline-block;
+  line-height: 38rpx;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+}

@@ -1,0 +1,56 @@
+/* pages/addTraffic/addTraffic.wxss */
+.label{
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #000000;
+  letter-spacing: 0;
+  margin: 30rpx 0 10rpx 30rpx;
+}
+.choose{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 30rpx;
+  background-color: #ffffff;
+  box-sizing:border-box;
+}
+.choose .left{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #C8C8C8;
+  letter-spacing: 0;
+}
+.choose .icon-xyb{
+  font-size: 16px;
+  color: #BBBBBB;
+}
+.describe{
+background-color:#fff;
+width:750rpx;
+height:446rpx;
+padding: 30rpx;
+box-sizing: border-box;
+}
+textarea{
+  height: 100%;
+  width: 100%
+}
+.add_btn{
+  width: 690rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 8rpx 24rpx 0 rgba(255, 68, 53, 0.1);
+  background-image: var(--linearTwo);
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFangSC;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  position: fixed;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

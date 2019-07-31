@@ -1,0 +1,31 @@
+<!--pages/information_detail/information_detail.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='zixun_conts'>
+  <view class='zixun_title'>{{newsDetail.title}}</view>
+  <view class='author'>编辑：{{newsDetail.author}}</view>
+  <view class='time'>时间：{{newsDetail.pubtime}}</view>
+  <!-- <image class='img' src='{{newsDetail.imgUrl}}'></image> -->
+  <view class='conts'>
+    <rich-text nodes='{{newsDetail.content}}'></rich-text>
+  </view>
+</view>
+<view class='bottom_btn'>
+  <view bindtap='sharepopup'>
+    <image src='../../images/icons/zhuanfa1@3x.png'></image>
+    <text>转发</text>
+  </view>
+  <text class='line'></text>
+  <view>
+    <image src='../../images/icons/guankan@3x.png'></image>
+    <text>{{newsDetail.views}}</text>
+  </view>
+  <text class='line'></text>
+  <view catchtap='likeNews'>
+    <image src='{{newsDetail.likeStatus=="1"?"../../images/dz-1.png":"../../images/icons/weidianzan1@3x.png"}}'></image>
+    <text class='{{newsDetail.likeStatus=="1"?"liked":""}}'>点赞</text>
+  </view>
+</view>
+
+<!-- 转发分享弹窗 -->
+<sharepopup isShare='{{isShare}}' isShow='{{isShow}}' catchhide='hideShare' catchsharePyq='sharePyq'></sharepopup>
+<painter style='position: fixed;right: 1000px;bottom: -1000px' palette="{{template}}" bind:imgOK="getShareImg" />

@@ -1,0 +1,41 @@
+<!--pages/traffic/traffic.wxml-->
+<!-- 顶部导航栏 -->
+<cover-view class='header' style='padding-top:{{isShipei?systemData.statusBarHeight + 8:systemData.statusBarHeight}}px' >
+  <cover-image class='back {{isShipei?"sp":""}}' bindtap='backPre'  src='/images/back.png'></cover-image>
+  <cover-view class='title'>{{title}}</cover-view>
+</cover-view>
+<cover-view class='emptybox' style='padding-top:{{isShipei?systemData.statusBarHeight + 8:systemData.statusBarHeight}}px' wx:if='{{!isBgColor}}'></cover-view>
+
+ <!-- 地图 -->
+<map id="myMap" style="width:100%;height:100%;" longitude="{{longitude}}" latitude="{{latitude}}" scale='18' show-location markers="{{markers}}" bindmarkertap="markertap"></map>
+<!-- 新增路况 -->
+<cover-view class='add' catchtap='enterPage' data-url='../addTraffic/addTraffic' wx:if='{{userInfo.interactive=="1"}}'>
+  <cover-image class='add_img' src='../../images/icons/add_icon.png' mode='aspectFit' lazy-load></cover-image>
+</cover-view>
+<!-- 动态路况 -->
+<cover-view class='traffic_live'>
+  <cover-view class='top_box'>
+    <cover-view class='address'>{{trafficChat.position}}</cover-view>
+    <cover-view class='num'>{{popularNum}}人参与>> </cover-view>
+  </cover-view>
+  <cover-view class='split'></cover-view>
+  <cover-view class="traffic_list" bindtouchstart='touchstart' bindtouchmove='touchmove' bindtouchend='touchend' catchtap='enterPage' data-url='../trafficDetail/trafficDetail' data-id='{{trafficChat.id}}'> 
+    <cover-view class='item'>
+      <cover-view class='name'>{{trafficChat.anchorName}}</cover-view>
+      <cover-view style='margin-left:5rpx;'>:</cover-view>
+    </cover-view>
+    <cover-view class='text'>{{trafficChat.description}}</cover-view>
+  </cover-view>
+  <!-- 进入直播间 -->
+  <cover-view class='btn' catchtap='enterPage' data-url='../studio/studio' data-title='{{chatRoomTitle}}' data-position='{{position}}' data-trafficuuid='{{programuuid}}' wx:if='{{trafficChat}}'>
+    进入直播间
+  </cover-view>
+</cover-view>
+
+
+
+
+
+
+
+

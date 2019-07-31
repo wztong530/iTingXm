@@ -1,0 +1,40 @@
+<!--pages/comments_list/comments_list.wxml-->
+<header title='{{title}}' isBack="{{isBack}}"></header>
+<block wx:if="{{commentsList.length>0}}">
+    <view class='comments_list' wx:for="{{commentsList}}" wx:key='{{index}}'>
+      <view class='item'>
+        <view class='left'>
+          <image class='avatar'src='{{item.avatarImageUrl}}'></image>
+        </view>
+        <view class='right' bindtap='replyContent' data-id='{{item.id}}'>
+          <view class='name'>{{item.nickName}}</view>
+          <view class='time'>{{item.createDate}}</view>
+          <view class='cont text-2-eclips'>
+          {{item.content}}
+          </view>
+          <view class='look_more' catchtap='enterPage' data-id='{{item.id}}' data-url='../comments_detail/comments_detail'>查看{{item.replyCount}}条回复</view>
+        </view>
+      </view>
+    </view>
+    <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</block>
+<block wx:else>
+ <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有评论噢~</text>
+  </view>
+</block>
+
+<view class='send_box' style='bottom:{{bottom}}px'>
+  <view class='left'>
+    <input value='{{newComment}}' bindinput='getInput' adjust-position="{{false}}" bindfocus="focus" bindblur="blur"></input>
+    <text class='line'></text>
+    <text class='send' bindtap='sendComment'>发送</text>
+  </view>
+</view>
+<view class='reply_mask' wx:if='{{showReply}}'>
+  <view class='reply_box'>
+    <view catchtap='confirmReply' data-url='../comments_detail/comments_detail' data-reply='true'>回复</view>
+    <view catchtap='cancelReply'>取消</view>
+  </view>
+</view>

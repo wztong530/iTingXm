@@ -1,8 +1,0 @@
-<header title="{{title}}"></header>
-<view class='tab'>
-  <view class='{{cur == 0 ? "cur":""}}' data-index='0' bindtap='change'><view><text>粉丝推广</text></view></view>
-  <view class='line'></view>
-  <view class='{{cur == 1 ? "cur":""}}' data-index='1' bindtap='change'><view><text>拼团推广</text></view></view>
-</view>
-<image hidden='{{cur == 1}}' src='https://gulong-1258380254.picsh.myqcloud.com/MallEnterprise/enterpriseLicense/20190410/e32f4d98bcfa46c782837f6b5d480d81.png' style='width:750rpx;height:2842rpx;'></image>
-<image hidden='{{cur == 0}}' src='https://gulong-1258380254.picsh.myqcloud.com/MallEnterprise/enterpriseLicense/20190410/9f5f2b3433984d3480d652b4244e371b.png' style='width:750rpx;height:3418rpx;'></image>

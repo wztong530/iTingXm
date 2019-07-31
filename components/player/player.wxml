@@ -1,0 +1,14 @@
+
+<!-- 音乐播放 -->
+<block wx:if='{{showPlayer}}'>
+  <view class='play_box' bindtap='enterPage' data-url='{{navigateUrl}}'>
+    <view class='left' >
+      <image src='{{playerImg}}' mode='aspectFill' lazy-load></image>
+      <text>{{playerTitle}}</text>
+    </view>
+    <view class='right' catchtap='changePlay'>
+      <image src="../../images/icons/{{isPlay?'pause':'play'}}.png" mode='aspectFill' lazy-load></image>
+    </view>
+  </view>
+  <view class='gradual-box'></view>
+</block>

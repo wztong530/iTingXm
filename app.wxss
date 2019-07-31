@@ -1,8 +1,9 @@
 page {
   /* --theme:#FFA00F; */
-  --text: #ff9500;
-  --linearOne: linear-gradient(-135deg, #ff9000 0%, #fa0 81%, #ffdb93 100%);
-  --linearTwo: linear-gradient(-90deg, #ff9000 0%, #fa0 93%);
+  --text: #FF6F4D;
+  --textTwo:#FF6C56;
+  --linearOne: linear-gradient(46deg, #F86162 0%, #FF8435 100%);
+  --linearTwo: linear-gradient(-34deg, #FF0103 0%, #FFDDA9 100%);
   --linearThree: linear-gradient(0deg, #ff9000 0%, #fa0 100%);
 }
 
@@ -138,4 +139,207 @@ page {
   height: 40rpx;
   opacity: 0.05;
   background-image: linear-gradient(rgba(255, 255, 255, 0.00), #000);
+}
+/*  首页标题公共样式 */
+.list_box .title{
+  display: flex;
+  align-items: center;
+}
+.list_box .title .line{
+  display: inline-block;
+  width: 8rpx;
+  height: 40rpx;
+  background-image: var(--linearTwo);
+  margin-right: 20rpx;
+  border-radius: 4rpx;
+}
+.list_box .title text:nth-child(2){
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: #000000;
+}
+/* 头部样式 */
+.top{
+  background-color: #ffffff;
+  display: flex;
+  height: 130rpx;
+  align-items: center;
+  padding:0 30rpx;
+  justify-content:space-between;
+  position:fixed;
+  top:0;
+  width:100%;
+  box-shadow:0 4rpx 16rpx #eee;
+  z-index:99999;
+  box-sizing:border-box;
+}
+.top.sp{
+  padding:100rpx 30rpx;
+}
+.top .left{
+  padding-top: 56rpx;
+  display: flex;
+  align-items: center;
+}
+.top .left .avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background-color: #eee;
+  margin-right: 12rpx;
+}
+.top .left .text{
+  font-family: PingFangSC-Medium;
+  font-size: 12px;
+  color: #000000;
+  line-height: 12px;
+}
+.top .mid{
+  width: 86rpx;
+  height: 70rpx;
+  padding-top: 48rpx;
+}
+.top .mid image{
+  width: 100%;
+  height: 100%;
+}
+.top .empty{
+  width:126rpx;
+}
+.empty_box{
+  width: 750rpx;
+  height: 130rpx;
+}
+.empty_box.sp{
+  height: 200rpx;
+}
+
+/* 空页面 */
+.nodata image {
+  width: 312rpx;
+  height: 218rpx;
+  margin-bottom: 52rpx;
+}
+
+.nodata text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #cacaca;
+  letter-spacing: -0.3px;
+  line-height: 20px;
+}
+.nodata {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-top: 300rpx;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+.hasNomore {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #a8a8a8;
+  letter-spacing: 0;
+  text-align: center;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+/* 搜索框 */
+.search_box image{
+  width: 30rpx;
+  height: 34rpx;
+}
+.search_box{
+  background: #ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #040404;
+  line-height: 14px;
+}
+.search_box input{
+  background: #FAFAFA;
+  border-radius: 14px;
+  width: 688rpx;
+  height: 54rpx;
+  text-align: center;
+}
+.placeholder_style{
+  font-family: PingFangSC-Light;
+  font-size: 12px;
+  color: #999999;
+  line-height: 12px; 
+}
+/* 动态播放条 */
+@-webkit-keyframes myfirst 
+{
+from {height: 24rpx;}
+to {height: 14rpx;}
+}
+.listen_times{
+  font-family: PingFangSC-Regular;
+  font-size: 9px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  width: 100%;
+  height: 66rpx;
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 16%, rgba(0,0,0,0.25) 100%);
+  position:absolute;
+  bottom:0;
+  border-bottom-left-radius:16rpx;
+  border-bottom-right-radius:16rpx;
+  padding:31rpx 0 0 10rpx;
+  box-sizing:border-box;
+  display: flex;
+}
+.listen_times .icon{
+  margin-right:10rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+.listen_times .icon>text{
+  display: inline-block;
+  width: 4rpx;
+  height: 24rpx;
+  background: #ffffff;
+  border-radius: 4rpx;
+  margin: 0 4rpx;
+  animation: myfirst 2s;
+  -webkit-animation: myfirst 2s;
+  animation-iteration-count:infinite;
+}
+.listen_times .icon>text:nth-child(2){
+  animation-delay:0.7s
+}
+.listen_times .icon>text:nth-child(3){
+  animation-delay:1.4s
+}
+
+/* textarea输入文本内容样式 */
+.textarea_style{
+  font-size:14px;
+  color:#333;
+  letter-spacing: 2rpx;
+}
+
+/* 下拉刷新小圆点 */
+.tips{
+  margin-top:40rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.tips view{
+  width:15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background-color: #999;
+  margin:10rpx;
 }

@@ -1,0 +1,8 @@
+<!--pages/releaseDynamic/releaseDynamic.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<textarea class='textarea_style' placeholder='这一刻的想法...' auto-focus value='{{content}}' bindinput='getInput'></textarea>
+<view class='images_box'>
+  <image wx:for='{{imgList}}' wx:key='{{index}}' src='{{item}}' lazy-load mode='aspectFill'></image>
+  <image class='add_img' src='../../images/iocn-fbdt@3x.png' bindtap='chooseImg' wx:if='{{imgList.length<9}}'></image>
+</view>
+<view class='add_btn' bindtap='addDynamic'>添加动态</view>

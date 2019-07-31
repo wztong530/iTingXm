@@ -1,0 +1,38 @@
+<!--pages/news/news.wxml-->
+<view class='top {{shipei?"sp":""}}'>
+    <view class='left'>
+      <image src='{{userInfo.avatarImageUrl}}' class='avatar'></image>
+      <view class='text'>
+        <view>{{myIntegral}}</view>
+        <view>积分</view>
+      </view>
+    </view>
+    <view class='mid'>
+      <image src='../../images/logo@3x.png'></image>
+    </view>
+    <view class='empty'></view>
+</view>
+<view class='empty_box {{shipei?"sp":""}}'></view>
+<block wx:if="{{messageList.length>0}}">
+  <view class='item' wx:for="{{messageList}}" wx:key='{{index}}' bindtap='enterPage' data-url='../chat/chat' data-otheruuid='{{item.fromUserId}}' data-othername='{{item.userName}}'>
+    <image class='avatar' src='{{item.userImage}}'></image>
+    <view class='conts'>
+      <view class='box_top'>
+        <view class='name'>{{item.userName}}</view>
+        <view class='time'>{{item.sendTime}}</view>
+      </view>
+      <view class='chat text-1-eclips'>
+        {{item.message}}
+      </view>
+    </view>
+  </view>
+  <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+</block>
+<block wx:else>
+  <view class='nodata'>
+    <image src='../../images/kym.png'></image>
+    <text>~暂时还没有消息噢~</text>
+  </view>
+</block>
+<!-- 底部播放器 -->
+<player></player> 

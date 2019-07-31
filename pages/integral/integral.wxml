@@ -1,0 +1,53 @@
+<header title='{{title}}' isBack='{{isBack}}'></header>
+<view class='top'>
+  <image class='top_bg' mode='aspectFit' src='../../images/jifenbeijing.png' lazy-load></image>
+  <view class='top_container'>
+    <view class='t_left'>
+      <view class='avatar'>
+        <image class='avatar-img' mode='aspectFill' src='{{avatarUrl}}' lazy-load></image>
+      </view>
+      <view class='jifen'>
+        <view>总积分</view>
+        <view>{{myIntegral}}</view>
+      </view>
+    </view>
+    <view class='t_right'>
+      <view class='btn_dh'>去兑换</view>
+      <view>></view>
+    </view>
+  </view> 
+</view>
+<!-- 积分兑换提示 -->
+<view class='point'>
+  <view class='point_cont'>
+    <image class='point_img' mode='aspectFill' lazy-load src='../../images/anchor/icon-interactive.svg'></image>
+    <text>积分兑换即将推出，敬请期待！</text>
+  </view>
+</view>
+<!-- 积分规则 -->
+<view class='list_box'>
+  <view class="title">
+    <text class='line'></text>
+    <text>积分规则</text>
+  </view>
+  <view class='sub_title'>
+    <text>今日已累积</text>
+    <text>{{todayScore}}</text>
+    <text>积分</text>
+  </view>
+</view>
+<!-- 积分列表 -->
+<view class='scoreList'>
+  <view class='card' wx:for='{{integralList}}' wx:key='{{index}}'>
+    <view class='card_title'>{{item.name}}</view>
+    <view class='card_subTitle'>{{item.title}}</view>
+    <view class='card_progress'>
+      <progress backgroundColor='#D8D8D8' activeColor='#F86162' stroke-width='6' border-radius='4' percent='{{(item.addNum/item.rule)*100}}'></progress>
+    </view>
+    <view class='card_detail'>
+      <text>已获{{item.addNum}}分 / 上限{{item.rule}}分</text>
+    </view>
+    <view class='card_status complete' wx:if='{{item.addNum/item.rule==1}}'>已完成</view>
+    <view class='card_status' wx:else bindtap='enterPage' data-url='{{item.jumpUrl}}' data-id='{{item.id}}'>{{item.id==20?'打卡':'去看看'}}</view>
+  </view>
+</view>

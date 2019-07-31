@@ -1,0 +1,78 @@
+<block>
+  <header title='{{title}}' isBack='{{isBack}}'></header>
+  <view class='back-head'>
+    <image class='avatar-img' mode='aspectFill' src='{{userInfo.avatarImageUrl}}'></image>
+    <view class='mask active'></view>
+    <view class='head-container'>
+      <view class='flex'>
+        <view class='avatar'>
+          <image class='avatar-img' mode='aspectFill' src='{{userInfo.avatarImageUrl}}'></image>
+        </view>
+        <text class='name'>{{userInfo.nickName}}</text>
+        <view class='auth-account'>
+          <text class='text'>主播端</text>
+        </view>
+        <view class='account'>账号：{{userInfo.phone}}</view>
+      </view>          
+    </view>
+  </view>
+
+  <view class='group-container'>
+    <view class='cell-row'>
+      <view class='item' bindtap='enterPage' data-url='../anchor_diantai/anchor_diantai' data-type='1'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/anchor/icon-radio.svg'></image>
+          <text class='text'>i听电台</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>Radio</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+      <view class='item' bindtap='enterPage' data-url='../live_xm/live_xm' data-type='1'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/anchor/icon-livebroadcast.svg'></image>
+          <text class='text'>i直播</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>Live broadcast</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+      <view class='item' bindtap='enterPage' data-url='../traffic/traffic' data-type='1' wx:if='{{userInfo.interactive=="1"}}'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/anchor/icon-interactive.svg'></image>
+          <text class='text'>路况互动</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>Interactive</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+      <view class='item' bindtap='enterPage' data-url='/pages/anchorHome/anchorHome' data-type='1'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/anchor/icon-dynamic.svg'></image>
+          <text class='text'>我的动态</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>Dynamic</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+      <view class='item' bindtap='enterPage' data-url='../news/news' data-type='0'>
+        <view class='part1'>
+          <image mode='aspectFit' class='icon' src='/images/anchor/icon-news.svg'></image>
+          <text class='text'>互动消息</text>
+        </view>
+        <view class='part2'>
+          <text class='text'>News</text>
+          <text class='icon-xyb'></text>
+        </view>
+      </view>
+        
+    </view>
+  </view>
+
+  <view class='edition'>版本号{{version}}</view>
+</block>
+<view class='gradual-box'></view>

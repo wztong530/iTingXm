@@ -1,0 +1,44 @@
+<!--pages/information_list/information_list.wxml-->
+<header title="{{title}}" isBack ="{{isBack}}"></header>
+<swiper indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" >
+    <block wx:for="{{advertList}}" wx:key='{{index}}'>
+      <swiper-item>
+        <view class='ad_item' bindtap='enterPage' data-url="../information_detail/information_detail" data-id='{{item.id}}'>
+          <image src="{{item.imgUrl}}"  lazy-load mode='aspectFill' />
+          <view class='ad_icon'>新闻推荐</view>
+        </view>
+
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='conts'>
+      <view class='tab'>
+        <!-- 分类 -->
+        <scroll-view  scroll-x class='scroll_box'>
+          <view class='tab_card'>
+            <view class='btn {{chosen==item.id?"active":""}}' catchtap='select' wx:for='{{newsCategoryList}}' wx:key='{{index}}' data-id='{{item.id}}'>{{item.newsName}}</view>
+            <!-- <view class='btn more'>更多</view> -->
+          </view>
+        </scroll-view>
+        <!-- 资讯列表 -->
+        <block wx:if='{{newsList.length>0}}'>
+          <view class='tab_item' wx:for="{{newsList}}" wx:key='{{index}}' catchtap='enterPage' data-url="../information_detail/information_detail" data-id='{{item.id}}' data-index='{{index}}' >
+            <image src='{{item.imgUrl}}' class='zixun_bg' lazy-load mode='aspectFill'></image>
+            <view class='info'>
+              <text class='title text-2-eclips {{item.viewsStatus == 1?"looked":""}}'>{{item.title}}</text>
+              <view class='view'>
+                <image class='icon' src='../../images/icon-view@3x.png'></image>
+                <text class='looknum'>{{item.views}}浏览</text>
+              </view>
+            </view>          
+          </view>
+          <view class='hasNomore' wx:if='{{isNoMore}}'>没有更多了～</view>
+        </block>
+        <block wx:else>
+          <view class='nodata'>
+            <image src='../../images/kym.png'></image>
+            <text>~暂无相关资讯噢~</text>
+          </view>
+        </block>
+      </view>
+    </view>

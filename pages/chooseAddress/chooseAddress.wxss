@@ -104,6 +104,7 @@
   letter-spacing: -0.34px;
   line-height: 14px;
   padding-left: 14rpx;
+  text-align: center;
 }
 
 .search input.empty-input {

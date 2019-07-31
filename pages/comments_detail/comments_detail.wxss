@@ -1,0 +1,132 @@
+/* pages/comments_detail/comments_detail.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.item, .reply_item {
+  display: flex;
+  padding-top: 30rpx;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.item {
+  padding-left: 30rpx;
+}
+
+.reply_item {
+  margin-left: 117.4rpx;
+}
+
+.item .left image, .reply_item .left image {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 36rpx;
+  background: #eee;
+  margin-left: 10rpx;
+}
+
+.right {
+  flex: 1;
+  padding-left:10rpx;
+  padding-bottom: 30rpx;
+}
+.reply_item .right{
+  padding-left: 20rpx;
+}
+.right .name {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 0;
+}
+
+.reply_item .reply_top {
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  color: #666;
+  letter-spacing: 0;
+  width: 524rpx;
+}
+
+.reply_item .reply_top .name {
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  color: #4a90e2;
+  letter-spacing: 0;
+}
+
+.right .time {
+  font-family: PingFangSC-Regular;
+  font-size: 11px;
+  color: #c8c8c8;
+  letter-spacing: 0;
+}
+
+reply_item .right .time {
+  font-size: 10px;
+}
+
+.right .cont {
+  font-family: PingFangSC-Regular;
+  font-size: 15px;
+  color: #333;
+  letter-spacing: 0;
+  margin: 20rpx 0 20rpx;
+  width: 524rpx;
+}
+
+.reply_item .right .cont {
+  margin: 16rpx 0 10rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #333;
+  letter-spacing: 0;
+}
+
+.comments_list .right .look_more {
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 0;
+}
+.send_box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 112rpx;
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px 0 #000000;
+  position:fixed;
+  bottom:0;
+  padding-bottom: 28rpx;
+}
+.send_box .left{
+  width: 690rpx;
+  height: 70rpx;
+  background:  #F5F5F5;
+  border-radius: 25rpx;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  padding:0 30rpx;
+  box-sizing:border-box;
+}
+.send_box .left input{
+  flex: 1;
+}
+.send_box .left .line{
+  display: inline-block;
+  margin: 0 31rpx 0 10rpx;
+  width: 2rpx;
+  height: 54rpx;
+  background-color:  #E4DFDF;
+}
+.send_box .left .send{
+  font-family: PingFangSC-Medium;
+  font-size: 15px;
+  color: var(--text);
+  letter-spacing: 0;
+  text-align: center;
+}

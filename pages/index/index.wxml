@@ -1,225 +1,220 @@
 <block wx:if='{{init}}'>
-  <header title='{{title}}' isBack='{{isBack}}'></header>
-  <view class='activity'>
-    <swiper autoplay='true'>
-      <swiper-item class='item' wx:for='{{noticelist}}' wx:key='{{index}}'>
-        <text class='key'>活动：</text>
-        <text class='value text-1-eclips'>{{item.content}}</text>
+  <!-- <header title='{{title}}' isBack='{{isBack}}'></header> -->
+  <view class='top {{shipei?"sp":""}}'>
+    <view class='left' catchtap='enterPage' data-url='../integral/integral'>
+      <image src='{{userInfo.avatarImageUrl}}' class='avatar'></image>
+      <view class='text'>
+        <view>{{myIntegral}}</view>
+        <view>积分</view>
+      </view>
+    </view>
+    <view class='mid'>
+      <image src='../../images/logo@3x.png'></image>
+    </view>
+    <view class='empty'></view>
+  </view>
+  <view class='empty_box {{shipei?"sp":""}}'></view>
+  <!-- 搜索 -->
+  <view class='search_box' >
+    <view class='text' bindtap='enterPage' data-url='../search/search'>搜索电台</view>
+    <!-- <input placeholder='搜索电台' placeholder-style='placeholder_style'></input> -->
+  </view>
+  <!-- 轮播 -->
+  <swiper indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" >
+    <block wx:for="{{advertList}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image src="{{item.imgUrl}}" class="slide-image" lazy-load mode='aspectFill' bindtap='enterPage' data-url='{{item.pagePath}}' />
       </swiper-item>
+    </block>
+  </swiper>
+  <!-- 导航列表 -->
+  <view class='graphic'>
+    <view class='item' wx:for="{{navCategoryList}}" wx:key='{{index}}' catchtap='enterPage' data-url="{{item.enterUrl}}">
+      <image src='{{item.imgUrl}}'></image>
+      <text>{{item.navName}}</text>
+    </view>
+  </view>
+  <!-- 公告 -->
+  <view class='notice' bindtap='enterPage' data-url='../notice_list/notice_list'>
+    <view class='label'>公告</view>
+    <swiper class='notice_cont' vertical='true' indicator-dots="{{false}}" autoplay="{{true}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{noticeList}}" wx:key='{{index}}'>
+        <swiper-item>
+          <view class='left'>
+            <text class='cont text-1-eclips'>{{item.content}}</text>
+          </view>
+          <view class='right' >
+            <text class='icon-xyb'></text>
+          </view>
+        </swiper-item>
+      </block>
     </swiper>
   </view>
-  <swiper autoplay='true' class='swiper' bindchange='' circular='true'>
-    <swiper-item class='item' wx:for='{{adImg}}'>
-      <image src='{{item.content}}'></image>
-    </swiper-item>
-  </swiper>
-<block>
-    <!-- catchtouchmove='preventNull' -->
-    <view class='content {{shipei?"shipei":""}}'>
-      <view class='orderbox {{shipei?"shipei":""}}'>
-        <view class='btn' bindtap='enterPage' data-url='order' data-type='1'>
-          <text>我要取餐</text>
+  <!-- 关注公众号 -->
+  <view class='box'>
+    <view class='left'>
+      <image class='logo' src='{{parameter.itemLogo}}' mode='aspectFit' lazy-load></image>
+      <view class='info'>
+        <view class='name'>{{parameter.itemName}}</view>
+        <view class='fans_num'>
+          <text>{{parameter.itemFansNums}}万粉丝｜{{parameter.itemViews}}千万访问量</text>
         </view>
-        <scroll-view scroll-x class='scrollbox'>
-          <view class='orderlist'>
-            <view class='empty'></view>
-            <view class='item {{currentTimeIndex == index ?"select":""}}' bindtap='selectTime' data-num='{{index}}' wx:for='{{timelist}}' wx:key='{{index}}'>
-              <text class='date'>{{item.week}}</text>
-              <text class='time' wx:if='{{index==0}}'>10点前下单</text>
-              <text class='time' wx:else>{{item.mon}}月{{item.date}}前下单</text>
-              <text class='tip'>已售<text class='num'>{{item.saleNumber}}</text>份</text>
-              <view class='selectbar'></view>
-            </view>
-          </view>
-        </scroll-view>
       </view>
-      <block wx:if='{{shoplist.length}}'>
-        <view class='recommend' bindtouchend='scrollEnd' bindtouchstart='scrollStart' catchtouchmove='reScroll'>
-          <view class='box {{isTran ?"tran":""}}' style='transform:translateX({{scrollL + "rpx"}})'>
-            <block wx:if='{{shoplist.length>2}}'>
-              <view class='item   {{currentIndex == shoplist.length -1?"current":""}}'>
-                <view class='img-cover'><text>已售罄</text></view>
-                <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
-                <view class='img-box'></view>
-                <image src='{{shoplist[shoplist.length -1].goodsImg}}' bindtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{shoplist.length -1}}'>
-                </image>
-
-                <view class='info'>
-                  <view class='txt'>
-                    <text class='name'>{{shoplist[shoplist.length -1].goodsName}}</text>
-                    <text class='value text-2-eclips'>{{shoplist[shoplist.length -1].goodsDescribe}}</text>
-                  </view>
-                <view class='btn pr {{!isToday?"":"super"}}'>
-                  <block wx:if='{{!isToday}}'>
-                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[shoplist.length -1].discountprice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-
-                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{shoplist.length-1}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[shoplist.length-1].groupPrice}}</text>
-                      </view>
-                      <text>拼团购</text>
-                    </view>
-                  </block>
-                  <block wx:else>
-                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{shoplist.length-1}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[shoplist.length-1].basicPrice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-                  </block>
+    </view>
+    <view class='right' bindtap='showOA'>
+      <view class='btn'>关注公众号</view>
+      <text class='red_dot'></text>
+    </view>
+  </view>
+  
+  <!-- 直播互动 -->
+  <view class='live list_box'>
+    <view class="title">
+      <text class='line'></text>
+      <text>直播互动</text>
+    </view>
+    <swiper circular="{{circular}}" class='live_list' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"   display-multiple-items='2' indicator-dots="{{false}}" indicator-active-color='#ff0000' next-margin="100rpx">
+      <block wx:for="{{chatroomList}}" wx:key="{{index}}">
+        <swiper-item class='item' catchtap='enterPage' data-url="../live_list/live_list" data-id='{{item.uuid}}' data-title='{{item.chatroomName+" "+item.frequencyModulation}}'>
+          <view class='live_box'>
+            <image class='live_bg' src="{{item.imgUrl}}"></image>
+            <view class='conts'>
+              <view class='live_class'>{{item.type || "电台直播"}}</view>
+              <view class='listen_times'>
+                <view class="icon">
+                  <text></text>
+                  <text></text>
+                  <text></text>
                 </view>
-                </view>
-              </view>
-            </block>
-            <!--  -->
-            <view class='item   {{currentIndex == index?"current":""}}' wx:for='{{shoplist}}' wx:key='{{index}}'>
-            <view class='img-cover'><text>已售罄</text></view>
-              <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
-              <view class='img-box'></view>
-              <image src='{{item.goodsImg}}' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{index}}'></image>
-
-              <view class='info'>
-                <view class='txt'>
-                  <text class='name'>{{item.goodsName}}</text>
-                  <text class='value text-2-eclips'>{{item.goodsDescribe}}</text>
-                </view>
-                <view class='btn pr {{!isToday?"":"super"}}'>
-                  <block wx:if='{{!isToday}}'>
-                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{item.discountprice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-
-                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{item.groupPrice}}</text>
-                      </view>
-                      <text>拼团购</text>
-                    </view>
-                  </block>
-                  <block wx:else>
-                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{item.basicPrice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-                  </block>
-                </view>
+                <text class='num'>{{item.popularValue || 0}}</text>
               </view>
             </view>
-            <!--  -->
-            <block wx:if='{{shoplist.length>2}}'>
-              <view class='item   {{currentIndex == 0?"current":""}}'>
-              <view class='img-cover'><text>已售罄</text></view>
-                <button wx:if='{{!userInfo}}' class='empower-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-index=''></button>
-                <view class='img-box'></view>
-                <image src='{{shoplist[0].goodsImg}}' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='0'>
-                </image>
-
-                <view class='info'>
-                  <view class='txt'>
-                    <text class='name'>{{shoplist[0].goodsName}}</text>
-                    <text class='value text-2-eclips'>{{shoplist[0].goodsDescribe}}</text>
-                  </view>
-                <view class='btn pr {{!isToday?"":"super"}}'>
-                  <block wx:if='{{!isToday}}'>
-                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{0}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[0].discountprice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-
-                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{0}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[0].groupPrice}}</text>
-                      </view>
-                      <text>拼团购</text>
-                    </view>
-                  </block>
-                  <block wx:else>
-                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{item.basicPrice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-                  </block>
-                </view>
-                </view>
+          </view>
+          <view class='live_title text-1-eclips'>{{item.chatroomName}}</view>
+          <view class='channel'>{{item.frequencyModulation}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- i听电台 -->
+  <view class='radio list_box'>
+    <view class="title">
+      <view class='left'>
+        <text class='line'></text>
+        <text>i听电台</text>
+      </view>
+      <view class='right' bindtap='enterPage' data-url='../diantai/diantai'>
+        <text class='btn' >更多</text>
+      </view>
+    </view>
+    <view class='radio_list'>
+      <view class='item' wx:for="{{radioList}}" wx:key='{{index}}' catchtap='enterPage' data-id='{{item.id}}' data-url='../program_list/program_list' >
+        <view class='radio_box'>
+          <image class='bg' src="{{item.imgUrl}}"></image>
+          <view class='conts' wx:if="{{true}}">
+            <image class='play_icon' src="../../images/bofan2.png"></image>
+            <view class='listen_times'>
+              <view class="icon">
+                <text></text>
+                <text></text>
+                <text></text>
               </view>
-              <view class='item'>
-                <view class='img-box'></view>
-                <image src='{{shoplist[1].goodsImg}}'>
-                </image>
-                <view class='info'>
-                  <view class='txt'>
-                    <text class='name'>{{shoplist[1].goodsName}}</text>
-                    <text class='value text-2-eclips'>{{shoplist[1].goodsDescribe}}</text>
-                  </view>
-                <view class='btn pr {{!isToday?"":"super"}}'>
-                  <block wx:if='{{!isToday}}'>
-                    <view class='lf' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{1}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[1].discountprice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-
-                    <view class='rt' catchtap='enterPage' data-url='../assembleDetail/assembleDetail' data-type='3' data-index='{{1}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{shoplist[1].groupPrice}}</text>
-                      </view>
-                      <text>拼团购</text>
-                    </view>
-                  </block>
-                  <block wx:else>
-                      <view class='rt' catchtap='enterPage' data-url='../mating/mating' data-type='2' data-index='{{index}}'>
-                      <view class='price'>
-                        <text class='txt-mark'>¥</text>
-                        <text>{{item.basicPrice}}</text>
-                      </view>
-                      <text>专享购</text>
-                    </view>
-                  </block>
-                </view>
-                </view>
-              </view>
-            </block>
+              <text class='num'>{{item.playNum}}</text>
+            </view>
           </view>
         </view>
-      </block>
-      <block wx:else>
-        <view class='nodata'>
-          <!-- {{isWeek?"week":"work"}} -->
-          <image src='{{nodataImg}}' class='{{isWeek?"week":"work"}}'></image>
-          <text>{{nodataTxt}}</text>
-        </view>
-      </block>
+        <view class='radio_name text-1-eclips'>{{item.programsName}}</view>
+      </view>
     </view>
-  </block>
+  </view>
+  <!-- 路口互动 -->
+  <view class='interactive list_box'>
+    <view class="title">
+      <text class='line'></text>
+      <text>路况互动</text>
+    </view>
+    <view class='conts' catchtap='enterPage' data-url='../traffic/traffic'>
+      <image class='bg' src='{{parameter.roadInteractionImg}}' mode='aspectFill' lazy-load></image>
+      <view class='nums'>
+        <view class='tip'>{{trafficUserNum}}人正在路况互动
+          <text class='icon-xyb'></text>
+        </view>
+        <view class='avatars'>
+          <image class='avatar' wx:for='{{trafficUserImages}}' wx:key='{{index}}' src='{{item.headImg}}'></image>
+          <view class='dots'>
+            <text></text>
+            <text></text>
+            <text></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- i资讯 -->
+  <view class='information list_box'>
+    <view class="title">
+      <text class='line'></text>
+      <text>i资讯</text>
+    </view>
+    <view class='conts'>
+      <view class='tab'>
+        <view class='tab_card'>
+          <text class='btn {{chosen==item.id?"active":""}}' catchtap='select' wx:for='{{newsCategoryList}}' wx:key='{{index}}' data-id='{{item.id}}'>{{item.newsName}}</text>
+          <text class='btn more' catchtap='enterPage' data-url='../information_list/information_list'>更多</text>
+        </view>
+        <!-- 资讯轮播 -->
+        <swiper class='news_swiper' indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" >
+          <swiper-item class='news_swiper_item' wx:for='{{newsList}}' wx:key='{{index}}'>
+            <view class='tab_item' catchtap='enterPage' data-url='../information_detail/information_detail' data-id='{{item.id}}'>
+              <image src='{{item.imgUrl}}' mode='aspectFill' lazy-load></image>
+              <text class='title text-1-eclips'>{{item.title}}</text>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- i主播 -->
+  <view class='anchor list_box'>
+    <view class="title">
+      <text class='line'></text>
+      <text>i主播</text>
+    </view>
+    <view class='anchor_border'>
+      <swiper class='anchor_list' display-multiple-items='3' indicator-dots="{{false}}" next-margin="80rpx" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+        <block wx:for="{{anchorList}}" wx:key='{{index}}'>
+          <swiper-item class='item'>
+            <view class='anchor_box'>
+              <image class='anchor_avatar' src='{{item.imgUrl}}' catchtap='enterPage' data-url='../anchorHome/anchorHome' data-id='{{item.id}}' mode='aspectFill' lazy-load></image>
+              <text class='anchor_name text-1-eclips'>{{item.name}}</text>
+              <view class='btn' catchtap='handleFocus' data-focusStatus='{{item.focusStatus}}' data-id='{{item.id}}' data-index='{{index}}' data-focusId='{{item.focusId}}'>
+                <text wx:if="{{item.focusStatus=='1'}}" class='focused'>已关注</text>
+                <text wx:else class='focus'>+关注</text>
+              </view> 
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
 </block>
 
+<!-- 底部播放器 -->
+<player></player> 
 
+<!-- 授权弹窗 -->
+<view class='mask' wx:if="{{noUserInfo}}">
+  <image src='../../images/invalid-name.png'></image>
+  <button class='btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo' lang='zh_CN'>爱听就听</button>
+</view>
 
-<view class='gradual-box'></view>
+<!-- 公众号弹窗 -->
+  <view class='pop_mask' wx:if='{{showOA}}'>
+    <view class='close_pop' bindtap='closePop'>
+      <image src='../../images/guanbi-3@3x.png'></image>
+    </view>
+    <view class='pop_content'>
+      <image src='{{parameter.attentionPromptImg}}' mode='aspectFit' lazy-load></image>
+      <view class='know_btn' bindtap='closePop'>我知道了</view>
+    </view>
+  </view>

@@ -1,0 +1,14 @@
+<!--pages/focusPublic/focusPublic.wxml-->
+<header title="{{title}}" isBack="{{isBack}}"></header>
+<view class='show_oa'>
+  <official-account></official-account>
+</view>
+<view class='arrow_top'>
+  <view class='lingdang'>
+    <image src='../../images/lingdang@3x.png'></image>
+  </view>
+  <view>点击上方关注“i 听厦门” 公众号</view>
+  <view class='arrow'>
+    <image src='../../images/arrowTop-copy_Copy_3@3x.png'></image>
+  </view>
+</view>

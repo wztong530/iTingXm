@@ -1,0 +1,108 @@
+/* pages/information_list/information_list.wxss */
+page{
+  background: #fcfcfc;
+}
+swiper,swiper-item{
+  width: 750rpx;
+  height: 520rpx;
+}
+swiper .ad_item{
+  width: 750rpx;
+  height: 520rpx;
+}
+swiper .ad_item image{
+  width: 100%;
+  height: 100%;
+}
+.ad_item{
+  position: relative;
+}
+.ad_item .ad_icon{
+  position: absolute;
+  right:0;
+  bottom: 20rpx;
+  width:140rpx;
+  height: 48rpx;
+  background-color: #c69982;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 48rpx;
+  letter-spacing: 1.5px;
+  padding-left: 4rpx;
+}
+.conts .tab .scroll_box{
+  height: 120rpx;
+}
+.conts .tab .tab_card{
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 40rpx 28rpx 20rpx 0;
+  padding:0 28rpx
+}
+ .conts .tab .tab_card .btn{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #9B9B9B;
+  padding: 6rpx 20rpx ;
+  border-radius: 26rpx;
+  border: 1px solid #BCBCBC;
+  margin-right:28rpx;
+  white-space: nowrap;
+}
+ .conts .tab .tab_card .active{
+  background-image: var(--linearTwo);
+  color: #FFFFFF;
+  border:inherit;
+}
+ .conts .tab .tab_card .more{
+  background-color: #BCBCBC;
+  color: #FFFFFF;
+}
+.conts .tab .tab_item{
+  width: 690rpx;
+  height: 202rpx;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.10);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  box-sizing:border-box;
+  margin: 0 30rpx 30rpx;
+}
+.conts .tab .tab_item .zixun_bg{
+  width: 212rpx;
+  height:162rpx;
+  margin-right: 20rpx;
+  border-radius:8rpx;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 418rpx;
+  height: 140rpx;
+}
+.info .title{
+  font-family: PingFangSC-Medium;
+  font-size: 15px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.info .title.looked{
+  color: #999999;
+}
+.info .icon{
+  width: 32rpx;
+  height: 20rpx;
+  margin-right: 6rpx;
+}
+.info .looknum{
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 12px;
+}

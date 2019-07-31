@@ -1,6 +1,5 @@
- import { Request } from './utils/request.js';
- var api = new Request()
-
+import { Request } from './utils/request.js';
+var api = new Request()
 import { config } from 'utils/config.js';
 
 //app.js
@@ -18,7 +17,7 @@ App({
     this.globalData.version = config.version
     this.globalData.appName = config.appName
     this.globalData.businessId = config.id
-    
+
     wx.getSystemInfo({
       success: res => {
         if (res.errMsg === 'getSystemInfo:ok') {
@@ -38,13 +37,26 @@ App({
       }
     })
   },
+  onShow:function(options){
+    console.log('场景值',options.scene)
+    this.globalData.scene=options.scene
+  },
+
   globalData: {
+    deviceInfo:'',//设备信息
+    scene:'',//场景值
     userInfo: null,
-    userId:'',
-    isLocation:false,//用户是否授权地理位置
-    location:null,//用户的地理位置信息（经纬度）
-    isBranches:false,//用户是否可以登录网点端
-    branchesInfo:null,//网点端信息
-    timeList:null,//首页的时间列表信息
+    userId: '',
+    isLocation: false,//用户是否授权地理位置
+    location: null,//用户的地理位置信息（经纬度）
+    audioManager: {
+      manager: wx.getBackgroundAudioManager(),
+      showPlayer: false, //显示底部播放器
+      playerImg: '',
+      isPlay: false,
+      title:''
+    },
+    playingProgram:{},//正在播放的电台节目
+    trafficChat:null, //路况直播间信息
   }
 })
